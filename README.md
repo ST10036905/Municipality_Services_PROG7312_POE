@@ -1,7 +1,6 @@
 # Municipality_Services_PROG7321_POE
 The following C# application is being designed to allow for citizens to report any issues related to their municipality/location. The main feature which is being implemented is the "Report Issues" which is a form extensively focused on user input (location, description of problem, category it falls into and the media) which then will enable them to be addressed. 
 The application also has as a focal point the provision of a user friendly interface to encourage for the active user engagement through the implementation of interactive features.
-
 Steps on how to run and compile the application :
 1 - Opening the folder on visual studio - The user should first have visual studio installed. The following folder should be extracted and visual studio opened. Once you open visual studio, select open a project or solution from the start screen and proceed to opening the folder by navigating to the .sln fine, which is the solution file. 
 2 - Building the project - Once the project is loaded, there is a menu on the top with the Build option which should be selected, as follows, Build > Build solution. With this process, visual studio will compile the application which means that if there are any errors or warning, they will be displayed and hints for their resolutions provided, as to ensure a smooth running process.
