@@ -58,6 +58,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
         /// <summary>
         /// declaring a dictionary (data structure) to store estimated times for the resolution of different categories.
+        /// user engagement feature as dates for resolution are personalized.
         /// </summary>
         private Dictionary<string, string> estimatedTimes = new Dictionary<string, string>()
         {
@@ -123,7 +124,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
 
         /// <summary>
-        /// method that determines a personalized message based on the selected category, for user engagement.
+        /// method that determines a personalized message based on the selected category (user engagement) feature.
         /// </summary>
         /// <param name="category">The selected category from the ListBox.</param>
         /// <returns>A personalized message string.</returns>
