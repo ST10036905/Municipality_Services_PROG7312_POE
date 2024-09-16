@@ -13,13 +13,12 @@ using System.Windows.Forms;
 //PROG7321 POE PART 1
 //Class to manipulate report issues form
 
-
 namespace Municipality_Services_PROG7321_POE.WindowsForms
 {
     public partial class Reporting : Form
     {
         /// <summary>
-        ///  declaring and instantiating a data structure to store report issues data.
+        ///  declaring and instantiating a data structure(list) to store report issues data.
         /// </summary>
         private List<ReportData> reportList = new List<ReportData>();
 
@@ -35,7 +34,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
 
         /// <summary>
-        /// default constructor.
+        /// default constructor used to initialize components and the progress bar (user engagement feature).
         /// </summary>
         public Reporting()
         {
@@ -47,7 +46,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
 
         /// <summary>
-        /// form load to display date.
+        /// form load to display date the current date.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -58,7 +57,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
 
         /// <summary>
-        /// declaring a dictionary (data structure) to store estimated times for different categories
+        /// declaring a dictionary (data structure) to store estimated times for the resolution of different categories.
         /// </summary>
         private Dictionary<string, string> estimatedTimes = new Dictionary<string, string>()
         {
@@ -74,12 +73,12 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        // To store multiple file paths
         private void mediaBtn_Click_1(object sender, EventArgs e)
         {
             //using a generic list (data structure) that stores the different medias attached
             List<string> selectedFiles = new List<string>();
 
+            //setting up the file dialog to allow for different formats and image types.
             openFileDialog1.Filter = "Document Files|*.docx;*.pdf;*.txt|Image Files|*.jpg;*.jpeg;*.png|All Files|*.*";
             openFileDialog1.Title = "Select media to be attached";
 
@@ -100,7 +99,6 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
                 {
                     pictureBox.Image = Image.FromFile(firstFile);
                 }
-
                 ProgressBarUpdate();
             }
         }//__________________________________________________________________________________________________________
@@ -109,6 +107,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
         /// <summary>
         /// method that validates user input.
         /// </summary>
+        /// <returns> true if the validation passes, otherwise false </returns>
         private bool validateInput()
             {
             // Validate empty fields, including ListBox selection
@@ -251,7 +250,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
 
         /// <summary>
-        /// calling the method to update progress bar.
+        /// calling the method to update progress bar whenever content changes.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -294,7 +293,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
        
         /// <summary>
-        /// calling method to update progress bar.
+        /// calling method to update progress bar whenever contents change.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

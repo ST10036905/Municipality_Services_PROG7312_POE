@@ -14,18 +14,17 @@ using System.Windows.Forms;
 //PROG7321 POE PART 1
 //Class used to manipulate the main form
 
-
 namespace Municipality_Services_PROG7321_POE
 {
     public partial class Form1 : Form
     {
         /// <summary>
-        /// declaring report form object.
+        /// declaring an object to represent report form.
         /// </summary>
         Reporting reportForm;
 
         /// <summary>
-        /// declaring issues form object.
+        /// declaring an object from issues form.
         /// </summary>
         Issues issuesForm;
 
@@ -44,7 +43,7 @@ namespace Municipality_Services_PROG7321_POE
         private void InitializeWelcomeUI()
         {
 
-            // Adding a header panel
+            // Adding a header panel to the main page
             Panel headerPanel = new Panel
             {
                 Size = new Size(this.Width, 80),
@@ -53,7 +52,7 @@ namespace Municipality_Services_PROG7321_POE
             };
             this.Controls.Add(headerPanel);
 
-            // Adding a label text
+            // Adding a label text to the main page
             Label titleLabel = new Label
             {
                 Text = "Welcome to Municipal Services",

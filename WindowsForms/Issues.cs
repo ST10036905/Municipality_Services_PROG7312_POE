@@ -13,17 +13,19 @@ using System.Windows.Forms;
 //PROG7321 POE PART 1
 //Class to manipulate the issues placed and display
 
-
 namespace Municipality_Services_PROG7321_POE.WindowsForms
 {
     public partial class Issues : Form
     {
         /// <summary>
-        /// declaring data structure to store reports issue.
+        /// declaring data structure(list) to store reports issue.
         /// </summary>
         private List<ReportData> reportList;
 
-
+        /// <summary>
+        /// constructor that accepts a list of report data and initializes the form. 
+        /// </summary>
+        /// <param name="reports">The list of report data to be passed and displayed on the form.</param>
         public Issues(List<ReportData> reports)
         {
             InitializeComponent();
@@ -33,7 +35,8 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
 
         /// <summary>
-        /// method to display reports in a DataGridView using a foreach loop
+        /// method to display reports in a DataGridView using a foreach loop.
+        /// this method iterates over the list and adds each report to the data grid view.
         /// </summary>
         private void DisplayIssues()
         {
@@ -47,6 +50,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
         /// <summary>
         /// button user clicks to go back to application form.
+        /// it prompts the user to confirm if they want to go back to previous form.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
