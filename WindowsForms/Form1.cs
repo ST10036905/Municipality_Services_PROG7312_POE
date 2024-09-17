@@ -67,8 +67,6 @@ namespace Municipality_Services_PROG7321_POE
 
         /// <summary>
         /// method that allows user to apply for a report issue with menu strip visible.
-        /// if user requests report issue from menu strip, panel is not hidden.
-        /// otherwise, when user selects from request issues button, menu strip is hidden.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
