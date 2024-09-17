@@ -99,9 +99,20 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void reportIssuesBtn_Click(object sender, EventArgs e)
         {
-            reportForm = new Reporting();
-            this.Hide();
-            reportForm.Show();
+            if (reportForm == null)
+            {
+                //initializing report object
+                reportForm = new Reporting();
+                //making the object an MDI parent
+                reportForm.MdiParent = this;
+                //filling the form and showing
+                reportForm.Dock = DockStyle.Fill;
+                reportForm.Show();
+            }
+            else
+            {
+                reportForm.Activate();
+            }
         }//__________________________________________________________________________________________________________
 
 

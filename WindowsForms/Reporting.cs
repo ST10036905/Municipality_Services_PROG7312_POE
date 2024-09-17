@@ -243,9 +243,17 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
         /// <param name="e"></param>
         private void viewBtn_Click_1(object sender, EventArgs e)
         {
-            //passing list to issues form
+            // creating an instance of the Issues form and passing the report list.
             Issues issuesForm = new Issues(reportList);
-            this.Hide();
+
+            // setting the Issues form as an MDI child.
+            issuesForm.MdiParent = this.MdiParent; 
+
+            // docking the form to fill the MDI container.
+            issuesForm.Dock = DockStyle.Fill;
+
+            this.Close();
+
             issuesForm.Show();
         }//__________________________________________________________________________________________________________
 
@@ -320,9 +328,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
             );
             if (result == DialogResult.Yes)
             {
-                mainForm = new Form1();
                 this.Close();
-                mainForm.Show();
             }
         }//__________________________________________________________________________________________________________
 

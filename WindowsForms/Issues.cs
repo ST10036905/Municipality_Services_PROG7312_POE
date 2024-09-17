@@ -67,8 +67,17 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
             // If the user clicks "Yes", proceeds to go back
             if (result == DialogResult.Yes)
             {
-                Reporting reportForm = new Reporting(); 
-                this.Hide();
+                // creating an instance of the report form and passing the report list.
+                Reporting reportForm = new Reporting();
+
+                // setting the report form as an MDI child.
+                reportForm.MdiParent = this.MdiParent;
+
+                // docking the form to fill the MDI container.
+                reportForm.Dock = DockStyle.Fill;
+
+                this.Close();
+
                 reportForm.Show();
             }
         }//____________________________________________________________________________________________________________
