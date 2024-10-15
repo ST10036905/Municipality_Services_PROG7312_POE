@@ -60,7 +60,7 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void reportIssuesBtn_Click(object sender, EventArgs e)
         {
-            // Close or hide the informative user control
+            // closing the informative user control
             informative.Hide(); 
 
             if (reportForm == null)
@@ -91,7 +91,7 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void announcementsBtn_Click(object sender, EventArgs e)
         {
-            // Close or hide the informative user control
+            // closing the informative user control
             informative.Hide();
 
             if (eventForm == null)
@@ -117,7 +117,7 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void btnViewEvents_Click(object sender, EventArgs e)
         {
-            // Close or hide the informative user control
+            // closing the informative user control
             informative.Hide();
 
             if (eventForm == null)
@@ -144,6 +144,9 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void localEventsBtn_Click_1(object sender, EventArgs e)
         {
+            // closing the informative user control
+            informative.Hide();
+
             if (eventForm == null)
             {
                 eventForm = new AddEvent();
@@ -159,10 +162,17 @@ namespace Municipality_Services_PROG7321_POE
             }
         }//__________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// closing form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void announcements_FormClosed(object sender, FormClosedEventArgs e)
         {
             eventForm = null;
-        }
+        }//__________________________________________________________________________________________________________
+
 
         /// <summary>
         /// method that redirects user to view latest event form.
@@ -246,7 +256,7 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void requestsBtn_Click(object sender, EventArgs e)
         {
-            //Displaying message
+            //displaying message
             MessageBox.Show("Maintanace mode. We will be back soon . ", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }//__________________________________________________________________________________________________________
 
