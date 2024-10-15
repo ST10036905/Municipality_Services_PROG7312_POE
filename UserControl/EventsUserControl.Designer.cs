@@ -63,12 +63,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(954, 364);
+            this.panel1.Size = new System.Drawing.Size(1191, 364);
             this.panel1.TabIndex = 0;
             // 
             // pictureBoxDisplay
             // 
-            this.pictureBoxDisplay.Location = new System.Drawing.Point(578, 14);
+            this.pictureBoxDisplay.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pictureBoxDisplay.Location = new System.Drawing.Point(807, 24);
             this.pictureBoxDisplay.Name = "pictureBoxDisplay";
             this.pictureBoxDisplay.Size = new System.Drawing.Size(347, 317);
             this.pictureBoxDisplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -100,11 +101,10 @@
             // descriptionLbl
             // 
             this.descriptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.descriptionLbl.AutoSize = true;
             this.descriptionLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionLbl.Location = new System.Drawing.Point(228, 165);
+            this.descriptionLbl.Location = new System.Drawing.Point(227, 161);
             this.descriptionLbl.Name = "descriptionLbl";
-            this.descriptionLbl.Size = new System.Drawing.Size(116, 23);
+            this.descriptionLbl.Size = new System.Drawing.Size(574, 55);
             this.descriptionLbl.TabIndex = 8;
             this.descriptionLbl.Text = "description";
             // 
@@ -204,7 +204,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panel1);
             this.Name = "EventsUserControl";
-            this.Size = new System.Drawing.Size(954, 364);
+            this.Size = new System.Drawing.Size(1191, 364);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisplay)).EndInit();

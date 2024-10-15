@@ -36,7 +36,7 @@ namespace Municipality_Services_PROG7321_POE
 
 
         /// <summary>
-        /// constructor for AddEvent class
+        /// constructor for AddEvent class.
         /// </summary>
         public AddEvent(List<EventData> events)
         {
@@ -48,21 +48,19 @@ namespace Municipality_Services_PROG7321_POE
             eventList = events;
         }//__________________________________________________________________________________________________________
 
-        //public AddEvent()
-        //{
-        //    InitializeComponent();
-        //    SampleEvents();
-        //    DisplayEvents();
-        //}
+       
+        /// <summary>
+        /// constructor holding parameters.
+        /// </summary>
         public AddEvent()
         {
             InitializeComponent();
             SampleEvents();
             DisplayEvents();
-
             // Attach event handler for dropdown selection change
             categorySearchComboBox.SelectedIndexChanged += new EventHandler(CategorySearchComboBox_SelectedIndexChanged);
-        }
+        }//__________________________________________________________________________________________________________
+
 
 
         /// <summary>
@@ -82,6 +80,85 @@ namespace Municipality_Services_PROG7321_POE
                 return false;
             }
             return true;
+        }//__________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method that updates the progress bar percentage based on field count.
+        /// </summary>
+        private void ProgressBarUpdate()
+        {
+            int fieldCount = 0;
+            int totalFields = 5;
+
+            // Increment fieldCount if each respective field is filled
+            if (!string.IsNullOrEmpty(nameTxtBox.Text)) fieldCount++;
+            if (categoryListBox.SelectedIndex != -1) fieldCount++;
+            if (!string.IsNullOrEmpty(descriptionRichTxtBox.Text)) fieldCount++;
+            if (locationListBox.SelectedIndex != -1) fieldCount++;
+            if (pictureBox != null) fieldCount++;
+
+            // Calculate the total progress percentage
+            int totalProgress = (fieldCount * 100) / totalFields;
+
+            // Update the progress bar value
+            progressBar.Value = Math.Min(totalProgress, 100);
+        }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// method that stores and displays media.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mediaBtn_Click(object sender, EventArgs e)
+        {
+            //using a generic list (data structure) that stores the different medias attached
+            List<string> selectedFiles = new List<string>();
+
+            //setting up the file dialog to allow for different formats and image types.
+            openFileDialog1.Filter = "Document Files|*.docx;*.pdf;*.txt|Image Files|*.jpg;*.jpeg;*.png|All Files|*.*";
+            openFileDialog1.Title = "Select media to be attached";
+
+            // allowing the selection of multiple files
+            openFileDialog1.Multiselect = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //storing the selected files in a list
+                selectedFiles = openFileDialog1.FileNames.ToList();
+
+                //displaying selected files in a TextBox or ListBox
+                filePathTxt.Text = string.Join(", ", selectedFiles);
+
+                // Preview first image if an image file is selected
+                string firstFile = selectedFiles.FirstOrDefault(f => f.EndsWith(".jpg") || f.EndsWith(".jpeg") || f.EndsWith(".png"));
+                if (firstFile != null)
+                {
+                    pictureBox.Image = Image.FromFile(firstFile);
+                }
+                ProgressBarUpdate();
+            }
+        }//__________________________________________________________________________________________________________
+
+        /// <summary>
+        /// method user clicks to go back to close menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// method user clicks to close main menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void eventWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            eventWindow = null;
         }//__________________________________________________________________________________________________________
 
 
@@ -184,50 +261,58 @@ namespace Municipality_Services_PROG7321_POE
                     name: "Community Town Hall Meeting",
                     category: "Community Meetings",
                     description: "Discuss upcoming infrastructure projects with local council.",
-                    time: DateTime.Now.AddDays(1),
+                    time: DateTime.Now.AddDays(-1),
                     media: null,
                     location: "Town Hall",
-                    formattedTime: DateTime.Now.AddDays(1).ToString("dd/MM/yyyy hh:mm tt")
+                    formattedTime: DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy hh:mm tt")
                 ),
                 new EventData(
                     name: "Annual Music and Food Festival",
                     category: "Festival",
                     description: "Experience local bands, food stalls in Rosebank.",
-                    time: DateTime.Now.AddDays(5),
+                    time: DateTime.Now.AddDays(-5),
                     media: null,
                     location: "Gauteng",
-                    formattedTime: DateTime.Now.AddDays(5).ToString("dd/MM/yyyy hh:mm tt")
+                    formattedTime: DateTime.Now.AddDays(-5).ToString("dd/MM/yyyy hh:mm tt")
                 ),
                 new EventData(
                     name: "Career Development Workshop",
                     category: "Workshop",
                     description: "A workshop on building professional skills and networking.",
-                    time: DateTime.Now.AddDays(3),
+                    time: DateTime.Now.AddDays(-3),
                     media: null,
                     location: "Community Center",
-                    formattedTime: DateTime.Now.AddDays(3).ToString("dd/MM/yyyy hh:mm tt")
+                    formattedTime: DateTime.Now.AddDays(-3).ToString("dd/MM/yyyy hh:mm tt")
                 ),
                 new EventData(
                     name: "Beach Clean-Up Volunteer Event",
                     category: "Volunteer Opportunities",
                     description: "Join the community in cleaning up the local beach Muizenburg.",
-                    time: DateTime.Now.AddDays(4),
+                    time: DateTime.Now.AddDays(-4),
                     media: null,
                     location: "Western Cape",
-                    formattedTime: DateTime.Now.AddDays(4).ToString("dd/MM/yyyy hh:mm tt")
+                    formattedTime: DateTime.Now.AddDays(-4).ToString("dd/MM/yyyy hh:mm tt")
                 ),
                 new EventData(
                     name: "Christmas Holiday Parade",
                     category: "Holiday Celebration",
                     description: "Enjoy the festive parade with floats and performers.",
-                    time: DateTime.Now.AddDays(10),
+                    time: DateTime.Now.AddDays(-10),
                     media: null,
                     location: "All provinces",
-                    formattedTime: DateTime.Now.AddDays(10).ToString("dd/MM/yyyy hh:mm tt")
+                    formattedTime: DateTime.Now.AddDays(-10).ToString("dd/MM/yyyy hh:mm tt")
                 )
             };
 
-            //Organizing events into the SortedDictionary by date
+        }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// method to display the events in the panel using a SORTED DICTIONARY.
+        /// </summary>
+        private void DisplayEvents()
+        {
+            //Organizing events into the SortedDictionary by date by looping through the eventslist
             foreach (var eventItem in eventList)
             {
                 if (!eventDictionary.ContainsKey(eventItem.Time))
@@ -236,113 +321,43 @@ namespace Municipality_Services_PROG7321_POE
                 }
                 eventDictionary[eventItem.Time].Add(eventItem);
             }
-        }//__________________________________________________________________________________________________________
 
-
-        /// <summary>
-        /// method to display the events in the panel.
-        /// </summary>
-        private void DisplayEvents()
-        {
-            
-            foreach (var eventItem in eventList)
+            // Check if there are any events in the dictionary and returning a message
+            if (eventDictionary.Count == 0)
             {
-                EventsUserControl eventControl = new EventsUserControl
-                {
-                    EventName = eventItem.Name,
-                    EventCategory = eventItem.Category,
-                    EventDescription = eventItem.Description,
-                    EventLocation = eventItem.Location,
-                    EventTime = eventItem.Time,
-                    EventImage = eventItem.Media
-                };
-
-                eventControl.Dock = DockStyle.Top;
-                flowLayoutPanel1.Controls.Add(eventControl);
+                MessageBox.Show("No events to display.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-        }//__________________________________________________________________________________________________________
 
+            // Clear any existing controls in the panel to avoid duplicating events.
+            flowLayoutPanel1.Controls.Clear();
 
-        /// <summary>
-        /// method that updates the progress bar percentage based on field count.
-        /// </summary>
-        private void ProgressBarUpdate()
-        {
-            int fieldCount = 0;
-            int totalFields = 5; 
-
-            // Increment fieldCount if each respective field is filled
-            if (!string.IsNullOrEmpty(nameTxtBox.Text)) fieldCount++;
-            if (categoryListBox.SelectedIndex != -1) fieldCount++;
-            if (!string.IsNullOrEmpty(descriptionRichTxtBox.Text)) fieldCount++;
-            if (locationListBox.SelectedIndex != -1) fieldCount++;
-            if (pictureBox !=null ) fieldCount++;
-
-            // Calculate the total progress percentage
-            int totalProgress = (fieldCount * 100) / totalFields;
-
-            // Update the progress bar value
-            progressBar.Value = Math.Min(totalProgress, 100);
-        }//__________________________________________________________________________________________________________
-
-
-        /// <summary>
-        /// method that stores and displays media.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void mediaBtn_Click(object sender, EventArgs e)
-        {
-            //using a generic list (data structure) that stores the different medias attached
-            List<string> selectedFiles = new List<string>();
-
-            //setting up the file dialog to allow for different formats and image types.
-            openFileDialog1.Filter = "Document Files|*.docx;*.pdf;*.txt|Image Files|*.jpg;*.jpeg;*.png|All Files|*.*";
-            openFileDialog1.Title = "Select media to be attached";
-
-            // allowing the selection of multiple files
-            openFileDialog1.Multiselect = true;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            // Iterate over the sorted event dictionary by date
+            foreach (var dateEntry in eventDictionary)
             {
-                //storing the selected files in a list
-                selectedFiles = openFileDialog1.FileNames.ToList();
-
-                //displaying selected files in a TextBox or ListBox
-                filePathTxt.Text = string.Join(", ", selectedFiles);
-
-                // Preview first image if an image file is selected
-                string firstFile = selectedFiles.FirstOrDefault(f => f.EndsWith(".jpg") || f.EndsWith(".jpeg") || f.EndsWith(".png"));
-                if (firstFile != null)
+                // For each date, there can be multiple events, so iterate through the list
+                foreach (var eventItem in dateEntry.Value)
                 {
-                    pictureBox.Image = Image.FromFile(firstFile);
+                    // Creating an event control for each event and display it in the panel
+                    EventsUserControl eventControl = new EventsUserControl
+                    {
+                        EventName = eventItem.Name,
+                        EventCategory = eventItem.Category,
+                        EventDescription = eventItem.Description,
+                        EventLocation = eventItem.Location,
+                        EventTime = eventItem.Time,
+                        EventImage = eventItem.Media
+                    };
+                    //adding event control to the panel to display in the UI
+                    flowLayoutPanel1.Controls.Add(eventControl);
                 }
-                ProgressBarUpdate();
             }
         }//__________________________________________________________________________________________________________
 
-        /// <summary>
-        /// method user clicks to go back to main menu.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }//__________________________________________________________________________________________________________
-
 
         /// <summary>
-        /// method user clicks to close main menu.
+        /// method used to filter based on category of event/announcement.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void eventWindow_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            eventWindow = null;
-        }//__________________________________________________________________________________________________________
-
-
         private void FilterCategory()
         {
             string categoryInput = categorySearchComboBox.SelectedItem?.ToString().ToLower();
@@ -353,6 +368,11 @@ namespace Municipality_Services_PROG7321_POE
             DisplayFilteredEvents(filteredEvents);
         }//__________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// method used to display the filtered results.
+        /// </summary>
+        /// <param name="filteredEvents"></param>
         private void DisplayFilteredEvents(List<EventData> filteredEvents)
         {
             // Clear the current displayed events before showing filtered results
@@ -378,45 +398,83 @@ namespace Municipality_Services_PROG7321_POE
                 };
                 flowLayoutPanel1.Controls.Add(eventControl);
             }
-        }
+        }//__________________________________________________________________________________________________________
 
-
-
+        
+        /// <summary>
+        /// updating progress bar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void locationListBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             ProgressBarUpdate();
-        }
+        }//__________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// updating progress bar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dateTimePicker_ValueChanged_1(object sender, EventArgs e)
         {
             ProgressBarUpdate();
-        }
+        }//__________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// updating progress bar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void descriptionRichTxtBox_TextChanged(object sender, EventArgs e)
         {
             ProgressBarUpdate();
-        }
+        }//__________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// updating progress bar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void categoryListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ProgressBarUpdate();
-        }
+        }//__________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// updating progress bar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nameTxtBox_TextChanged_1(object sender, EventArgs e)
         {
             ProgressBarUpdate();
-        }
+        }//__________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// updating progress bar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void filePathTxt_TextChanged(object sender, EventArgs e)
         {
             ProgressBarUpdate();
-        }
+        }//__________________________________________________________________________________________________________
 
+        /// <summary>
+        /// updating progress bar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CategorySearchComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             FilterCategory();
-        }
+        }//__________________________________________________________________________________________________________
 
-        
     }//____________________________________End of File_______________________________________________________
 }//__________________________________________________________________________________________________________
