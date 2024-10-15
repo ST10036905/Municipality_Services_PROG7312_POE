@@ -35,7 +35,7 @@ Once the user has entered the data, they can proceed to the submit button which 
 
 ## Search - the feature is also implemented on the "Add Events". Data is filtered for user to search on a specific event based on the category they select or date and only the specific ones are displayed and captured from the list. 
 
-## Should the user click on my recommendation button, a search engine is used to display the most-searched categories, providing personalized suggestions for the user. If the app finds events that match your top searched categories, they will be displayed in a message box notifying or displaying.
+## Should the user click on my recommendation button, a search engine is used to display the most-searched categories , depends on CATEGORY SEARCH, providing personalized suggestions for the user. If the app finds events that match your top searched categories, they will be displayed in a message box notifying or displaying.
 
 Additionally, user engagement feature of the progress bar was added to this form for an interactive use.
 
