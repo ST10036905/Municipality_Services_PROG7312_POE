@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBoxDisplay = new System.Windows.Forms.PictureBox();
             this.locationLbl = new System.Windows.Forms.Label();
             this.timeLbl = new System.Windows.Forms.Label();
             this.descriptionLbl = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBoxDisplay = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisplay)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(954, 364);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBoxDisplay
+            // 
+            this.pictureBoxDisplay.Location = new System.Drawing.Point(578, 14);
+            this.pictureBoxDisplay.Name = "pictureBoxDisplay";
+            this.pictureBoxDisplay.Size = new System.Drawing.Size(347, 317);
+            this.pictureBoxDisplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDisplay.TabIndex = 11;
+            this.pictureBoxDisplay.TabStop = false;
             // 
             // locationLbl
             // 
@@ -187,14 +196,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Latest Post";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pictureBoxDisplay
-            // 
-            this.pictureBoxDisplay.Location = new System.Drawing.Point(578, 14);
-            this.pictureBoxDisplay.Name = "pictureBoxDisplay";
-            this.pictureBoxDisplay.Size = new System.Drawing.Size(347, 317);
-            this.pictureBoxDisplay.TabIndex = 11;
-            this.pictureBoxDisplay.TabStop = false;
             // 
             // EventsUserControl
             // 

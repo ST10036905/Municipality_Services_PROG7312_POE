@@ -311,9 +311,9 @@
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar.Location = new System.Drawing.Point(0, 0);
+            this.progressBar.Location = new System.Drawing.Point(0, 31);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1082, 51);
+            this.progressBar.Size = new System.Drawing.Size(1082, 20);
             this.progressBar.TabIndex = 19;
             // 
             // openFileDialog1

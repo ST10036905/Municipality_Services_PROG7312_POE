@@ -376,8 +376,6 @@ namespace Municipality_Services_PROG7321_POE
                     EventTime = eventItem.Time,
                     EventImage = eventItem.Media
                 };
-
-                //eventControl.Dock = DockStyle.Top;
                 flowLayoutPanel1.Controls.Add(eventControl);
             }
         }
@@ -404,7 +402,7 @@ namespace Municipality_Services_PROG7321_POE
             ProgressBarUpdate();
         }
 
-        private void nameTxtBox_TextChanged(object sender, EventArgs e)
+        private void nameTxtBox_TextChanged_1(object sender, EventArgs e)
         {
             ProgressBarUpdate();
         }
@@ -419,5 +417,6 @@ namespace Municipality_Services_PROG7321_POE
             FilterCategory();
         }
 
+        
     }//____________________________________End of File_______________________________________________________
 }//__________________________________________________________________________________________________________

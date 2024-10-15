@@ -31,7 +31,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Submit = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -54,6 +53,7 @@
             this.dateTimePickerSearch = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -73,7 +73,7 @@
             this.flowLayoutPanel2.Controls.Add(this.panel4);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 5);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1293, 779);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1392, 779);
             this.flowLayoutPanel2.TabIndex = 16;
             // 
             // label1
@@ -81,32 +81,23 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(110)))), ((int)(((byte)(51)))));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(864, 47);
+            this.label1.Size = new System.Drawing.Size(732, 40);
             this.label1.TabIndex = 18;
             this.label1.Text = "Fill in fields to add an event/announcement";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar.Location = new System.Drawing.Point(3, 50);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1055, 40);
-            this.progressBar.TabIndex = 19;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 590F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 809F));
             this.tableLayoutPanel1.Controls.Add(this.Submit, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
@@ -121,9 +112,9 @@
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.locationListBox, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.filePathTxt, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox, 1, 5);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 96);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.filePathTxt, 1, 5);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 61);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.45283F));
@@ -135,16 +126,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1055, 606);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1292, 606);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // Submit
             // 
-            this.Submit.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Submit.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Submit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(138)))), ((int)(((byte)(82)))));
             this.Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Submit.ForeColor = System.Drawing.Color.White;
-            this.Submit.Location = new System.Drawing.Point(868, 554);
+            this.Submit.Location = new System.Drawing.Point(486, 554);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(184, 46);
             this.Submit.TabIndex = 0;
@@ -178,15 +169,15 @@
             // 
             // nameTxtBox
             // 
-            this.nameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.nameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.nameTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nameTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTxtBox.Location = new System.Drawing.Point(578, 3);
+            this.nameTxtBox.Location = new System.Drawing.Point(486, 3);
             this.nameTxtBox.Multiline = true;
             this.nameTxtBox.Name = "nameTxtBox";
             this.nameTxtBox.Size = new System.Drawing.Size(474, 35);
             this.nameTxtBox.TabIndex = 1;
-            this.nameTxtBox.TextChanged += new System.EventHandler(this.nameTxtBox_TextChanged);
+            this.nameTxtBox.TextChanged += new System.EventHandler(this.nameTxtBox_TextChanged_1);
             // 
             // label3
             // 
@@ -201,7 +192,7 @@
             // 
             // categoryListBox
             // 
-            this.categoryListBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.categoryListBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.categoryListBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryListBox.FormattingEnabled = true;
             this.categoryListBox.ItemHeight = 28;
@@ -215,7 +206,7 @@
             "Holiday celebration",
             "Government Service",
             "Alerts"});
-            this.categoryListBox.Location = new System.Drawing.Point(578, 68);
+            this.categoryListBox.Location = new System.Drawing.Point(486, 68);
             this.categoryListBox.Name = "categoryListBox";
             this.categoryListBox.Size = new System.Drawing.Size(474, 32);
             this.categoryListBox.TabIndex = 2;
@@ -234,12 +225,12 @@
             // 
             // descriptionRichTxtBox
             // 
-            this.descriptionRichTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.descriptionRichTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.descriptionRichTxtBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.descriptionRichTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.descriptionRichTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionRichTxtBox.ForeColor = System.Drawing.Color.Black;
-            this.descriptionRichTxtBox.Location = new System.Drawing.Point(578, 145);
+            this.descriptionRichTxtBox.Location = new System.Drawing.Point(486, 145);
             this.descriptionRichTxtBox.Name = "descriptionRichTxtBox";
             this.descriptionRichTxtBox.Size = new System.Drawing.Size(474, 49);
             this.descriptionRichTxtBox.TabIndex = 15;
@@ -248,8 +239,8 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.dateTimePicker.Location = new System.Drawing.Point(578, 232);
+            this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dateTimePicker.Location = new System.Drawing.Point(486, 232);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(474, 22);
             this.dateTimePicker.TabIndex = 18;
@@ -257,9 +248,9 @@
             // 
             // mediaBtn
             // 
-            this.mediaBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.mediaBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.mediaBtn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mediaBtn.Location = new System.Drawing.Point(578, 284);
+            this.mediaBtn.Location = new System.Drawing.Point(486, 284);
             this.mediaBtn.Name = "mediaBtn";
             this.mediaBtn.Size = new System.Drawing.Size(474, 49);
             this.mediaBtn.TabIndex = 19;
@@ -301,7 +292,7 @@
             // 
             // locationListBox
             // 
-            this.locationListBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.locationListBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.locationListBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.locationListBox.FormattingEnabled = true;
             this.locationListBox.ItemHeight = 28;
@@ -316,7 +307,7 @@
             "Northern Cape",
             "North West",
             "Mpumalanga"});
-            this.locationListBox.Location = new System.Drawing.Point(582, 510);
+            this.locationListBox.Location = new System.Drawing.Point(486, 510);
             this.locationListBox.Name = "locationListBox";
             this.locationListBox.Size = new System.Drawing.Size(470, 32);
             this.locationListBox.TabIndex = 20;
@@ -325,15 +316,17 @@
             // filePathTxt
             // 
             this.filePathTxt.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.filePathTxt.Location = new System.Drawing.Point(3, 412);
+            this.filePathTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.filePathTxt.Location = new System.Drawing.Point(486, 412);
+            this.filePathTxt.Multiline = true;
             this.filePathTxt.Name = "filePathTxt";
-            this.filePathTxt.Size = new System.Drawing.Size(459, 22);
+            this.filePathTxt.Size = new System.Drawing.Size(470, 22);
             this.filePathTxt.TabIndex = 22;
             // 
             // pictureBox
             // 
-            this.pictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox.Location = new System.Drawing.Point(769, 350);
+            this.pictureBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox.Location = new System.Drawing.Point(3, 350);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(283, 145);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -347,14 +340,14 @@
             this.panel4.Controls.Add(this.categorySearchComboBox);
             this.panel4.Controls.Add(this.dateTimePickerSearch);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Location = new System.Drawing.Point(3, 708);
+            this.panel4.Location = new System.Drawing.Point(3, 673);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1292, 58);
             this.panel4.TabIndex = 4;
             // 
             // categorySearchComboBox
             // 
-            this.categorySearchComboBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.categorySearchComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.categorySearchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categorySearchComboBox.FormattingEnabled = true;
             this.categorySearchComboBox.Items.AddRange(new object[] {
@@ -367,7 +360,7 @@
             "Holiday celebration",
             "Government Service",
             "Alerts"});
-            this.categorySearchComboBox.Location = new System.Drawing.Point(852, 22);
+            this.categorySearchComboBox.Location = new System.Drawing.Point(459, 22);
             this.categorySearchComboBox.Name = "categorySearchComboBox";
             this.categorySearchComboBox.Size = new System.Drawing.Size(328, 24);
             this.categorySearchComboBox.TabIndex = 6;
@@ -399,8 +392,17 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 784);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1415, 222);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1394, 222);
             this.flowLayoutPanel1.TabIndex = 17;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(3, 43);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(960, 12);
+            this.progressBar.TabIndex = 19;
             // 
             // AddEvent
             // 
@@ -409,7 +411,7 @@
             this.AutoScroll = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1436, 871);
+            this.ClientSize = new System.Drawing.Size(1415, 871);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -432,7 +434,6 @@
         private SamplePostUserControl eventsUserControl1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Button button1;
@@ -455,5 +456,6 @@
         private System.Windows.Forms.ComboBox categorySearchComboBox;
         private System.Windows.Forms.DateTimePicker dateTimePickerSearch;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
