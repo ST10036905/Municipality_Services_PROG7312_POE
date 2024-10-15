@@ -31,6 +31,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Submit = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -46,14 +47,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.locationListBox = new System.Windows.Forms.ListBox();
-            this.filePathTxt = new System.Windows.Forms.TextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.filePathTxt = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.categorySearchComboBox = new System.Windows.Forms.ComboBox();
             this.dateTimePickerSearch = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.recommendation = new System.Windows.Forms.Button();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -85,21 +86,29 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(110)))), ((int)(((byte)(51)))));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(732, 40);
+            this.label1.Size = new System.Drawing.Size(710, 40);
             this.label1.TabIndex = 18;
             this.label1.Text = "Fill in fields to add an event/announcement";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(3, 43);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(960, 12);
+            this.progressBar.TabIndex = 19;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 809F));
-            this.tableLayoutPanel1.Controls.Add(this.Submit, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 7);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 566F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 263F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.nameTxtBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
@@ -114,6 +123,9 @@
             this.tableLayoutPanel1.Controls.Add(this.locationListBox, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.filePathTxt, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.recommendation, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.Submit, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 7);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 61);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
@@ -135,7 +147,7 @@
             this.Submit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(138)))), ((int)(((byte)(82)))));
             this.Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Submit.ForeColor = System.Drawing.Color.White;
-            this.Submit.Location = new System.Drawing.Point(486, 554);
+            this.Submit.Location = new System.Drawing.Point(1032, 554);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(184, 46);
             this.Submit.TabIndex = 0;
@@ -172,7 +184,7 @@
             this.nameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.nameTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nameTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTxtBox.Location = new System.Drawing.Point(486, 3);
+            this.nameTxtBox.Location = new System.Drawing.Point(466, 3);
             this.nameTxtBox.Multiline = true;
             this.nameTxtBox.Name = "nameTxtBox";
             this.nameTxtBox.Size = new System.Drawing.Size(474, 35);
@@ -206,7 +218,7 @@
             "Holiday celebration",
             "Government Service",
             "Alerts"});
-            this.categoryListBox.Location = new System.Drawing.Point(486, 68);
+            this.categoryListBox.Location = new System.Drawing.Point(466, 68);
             this.categoryListBox.Name = "categoryListBox";
             this.categoryListBox.Size = new System.Drawing.Size(474, 32);
             this.categoryListBox.TabIndex = 2;
@@ -230,7 +242,7 @@
             this.descriptionRichTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.descriptionRichTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionRichTxtBox.ForeColor = System.Drawing.Color.Black;
-            this.descriptionRichTxtBox.Location = new System.Drawing.Point(486, 145);
+            this.descriptionRichTxtBox.Location = new System.Drawing.Point(466, 145);
             this.descriptionRichTxtBox.Name = "descriptionRichTxtBox";
             this.descriptionRichTxtBox.Size = new System.Drawing.Size(474, 49);
             this.descriptionRichTxtBox.TabIndex = 15;
@@ -240,7 +252,7 @@
             // dateTimePicker
             // 
             this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dateTimePicker.Location = new System.Drawing.Point(486, 232);
+            this.dateTimePicker.Location = new System.Drawing.Point(466, 232);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(474, 22);
             this.dateTimePicker.TabIndex = 18;
@@ -250,7 +262,7 @@
             // 
             this.mediaBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.mediaBtn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mediaBtn.Location = new System.Drawing.Point(486, 284);
+            this.mediaBtn.Location = new System.Drawing.Point(466, 284);
             this.mediaBtn.Name = "mediaBtn";
             this.mediaBtn.Size = new System.Drawing.Size(474, 49);
             this.mediaBtn.TabIndex = 19;
@@ -307,21 +319,11 @@
             "Northern Cape",
             "North West",
             "Mpumalanga"});
-            this.locationListBox.Location = new System.Drawing.Point(486, 510);
+            this.locationListBox.Location = new System.Drawing.Point(466, 510);
             this.locationListBox.Name = "locationListBox";
             this.locationListBox.Size = new System.Drawing.Size(470, 32);
             this.locationListBox.TabIndex = 20;
             this.locationListBox.SelectedIndexChanged += new System.EventHandler(this.locationListBox_SelectedIndexChanged_1);
-            // 
-            // filePathTxt
-            // 
-            this.filePathTxt.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.filePathTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.filePathTxt.Location = new System.Drawing.Point(486, 412);
-            this.filePathTxt.Multiline = true;
-            this.filePathTxt.Name = "filePathTxt";
-            this.filePathTxt.Size = new System.Drawing.Size(470, 22);
-            this.filePathTxt.TabIndex = 22;
             // 
             // pictureBox
             // 
@@ -332,6 +334,16 @@
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 21;
             this.pictureBox.TabStop = false;
+            // 
+            // filePathTxt
+            // 
+            this.filePathTxt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.filePathTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.filePathTxt.Location = new System.Drawing.Point(466, 412);
+            this.filePathTxt.Multiline = true;
+            this.filePathTxt.Name = "filePathTxt";
+            this.filePathTxt.Size = new System.Drawing.Size(470, 22);
+            this.filePathTxt.TabIndex = 22;
             // 
             // panel4
             // 
@@ -395,14 +407,19 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1394, 222);
             this.flowLayoutPanel1.TabIndex = 17;
             // 
-            // progressBar
+            // recommendation
             // 
-            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(3, 43);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(960, 12);
-            this.progressBar.TabIndex = 19;
+            this.recommendation.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.recommendation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(138)))), ((int)(((byte)(82)))));
+            this.recommendation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recommendation.ForeColor = System.Drawing.Color.White;
+            this.recommendation.Location = new System.Drawing.Point(466, 554);
+            this.recommendation.Name = "recommendation";
+            this.recommendation.Size = new System.Drawing.Size(254, 46);
+            this.recommendation.TabIndex = 23;
+            this.recommendation.Text = "My recommendation";
+            this.recommendation.UseVisualStyleBackColor = false;
+            this.recommendation.Click += new System.EventHandler(this.recommendation_Click);
             // 
             // AddEvent
             // 
@@ -457,5 +474,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerSearch;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button recommendation;
     }
 }

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 //Mayra Selemane
 //ST10036905
@@ -30,9 +31,14 @@ namespace Municipality_Services_PROG7321_POE
         ViewEvents eventWindow;
 
         /// <summary>
-        /// SortedDictionary to organize events by date
+        /// sortedDictionary to organize events by date
         /// </summary>
         private SortedDictionary<DateTime, List<EventData>> eventDictionary = new SortedDictionary<DateTime, List<EventData>>();
+
+        /// <summary>
+        /// dictionary used to count for the searches.
+        /// </summary>
+        private Dictionary<string, int> searchCounts = new Dictionary<string, int>();
 
 
         /// <summary>
@@ -312,7 +318,10 @@ namespace Municipality_Services_PROG7321_POE
         /// </summary>
         private void DisplayEvents()
         {
-            //Organizing events into the SortedDictionary by date by looping through the eventslist
+            // Clear the event dictionary before adding new events
+            eventDictionary.Clear();
+
+            //Organizing events into the SortedDictionary by date by looping through the eventsList
             foreach (var eventItem in eventList)
             {
                 if (!eventDictionary.ContainsKey(eventItem.Time))
@@ -348,10 +357,85 @@ namespace Municipality_Services_PROG7321_POE
                         EventTime = eventItem.Time,
                         EventImage = eventItem.Media
                     };
-                    //adding event control to the panel to display in the UI
+                    // Adding event control to the panel to display in the UI
                     flowLayoutPanel1.Controls.Add(eventControl);
                 }
             }
+        }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// method to show recommendations based on the most searched categories.
+        /// </summary>
+        private void ShowRecommendations()
+        {
+            // Check if there are any searches to base recommendations on
+            if (!searchCounts.Any())
+            {
+                MessageBox.Show("No recommended events found based on your searches.", "Recommendations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Get the top searched category
+            var topCategories = searchCounts
+                .OrderByDescending(kvp => kvp.Value)
+                .Take(1)
+                .Select(kvp => kvp.Key)
+                .ToList();
+
+            // Get recommended events based on top searched categories
+            List<EventData> recommendedEvents = GetRecommendedEvents(topCategories);
+
+            // If no recommended events found, return
+            if (!recommendedEvents.Any())
+            {
+                MessageBox.Show("No recommended events found based on your searches.", "Recommendations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Create a message to display recommended events
+            var recommendationsMessage = new StringBuilder();
+            recommendationsMessage.AppendLine("Here are some recommended events based on your searches:");
+
+            // Loop through recommended events to build the message
+            foreach (var recommendedEvent in recommendedEvents)
+            {
+                recommendationsMessage.AppendLine($"- {recommendedEvent.Name} at {recommendedEvent.Location} on {recommendedEvent.Time}");
+            }
+
+            // Display recommendations in a message box
+            MessageBox.Show(recommendationsMessage.ToString(), "Recommendations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// method to get recommended events based on searched categories.
+        /// </summary>
+        /// <param name="topCategories">List of top searched categories.</param>
+        /// <returns>List of recommended events.</returns>
+        private List<EventData> GetRecommendedEvents(List<string> topCategories)
+        {
+            // Normalize the category names to lower case for comparison
+            var lowerTopCategories = topCategories.Select(c => c.ToLower()).ToList();
+
+            // Filter events based on the top searched categories
+            var recommendedEvents = eventList
+                .Where(e => lowerTopCategories.Contains(e.Category.ToLower())) // Normalize event categories as well
+                .ToList();
+
+            return recommendedEvents;
+    }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// button used for user to view their recommendation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void recommendation_Click(object sender, EventArgs e)
+        {
+                // Show recommendations after displaying events
+                ShowRecommendations();
         }//__________________________________________________________________________________________________________
 
 
@@ -362,10 +446,25 @@ namespace Municipality_Services_PROG7321_POE
         {
             string categoryInput = categorySearchComboBox.SelectedItem?.ToString().ToLower();
 
+            // Update the search count if a valid category is selected
+            if (!string.IsNullOrEmpty(categoryInput))
+            {
+                if (searchCounts.ContainsKey(categoryInput))
+                {
+                    searchCounts[categoryInput]++;
+                }
+                else
+                {
+                    searchCounts[categoryInput] = 1;
+                }
+            }
+
+            // Filter events based on selected category
             var filteredEvents = eventList.Where(x =>
-            (string.IsNullOrEmpty(categoryInput) || x.Category.ToLower() == categoryInput)).ToList();
+                (string.IsNullOrEmpty(categoryInput) || x.Category.ToLower() == categoryInput)).ToList();
 
             DisplayFilteredEvents(filteredEvents);
+        
         }//__________________________________________________________________________________________________________
 
 
@@ -467,7 +566,7 @@ namespace Municipality_Services_PROG7321_POE
         }//__________________________________________________________________________________________________________
 
         /// <summary>
-        /// updating progress bar.
+        /// calling method that filters based on combo box.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
