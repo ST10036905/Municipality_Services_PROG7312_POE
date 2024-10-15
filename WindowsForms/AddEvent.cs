@@ -1,5 +1,6 @@
 ﻿using Municipality_Services_PROG7321_POE.WindowsForms;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -47,11 +48,20 @@ namespace Municipality_Services_PROG7321_POE
             eventList = events;
         }//__________________________________________________________________________________________________________
 
+        //public AddEvent()
+        //{
+        //    InitializeComponent();
+        //    SampleEvents();
+        //    DisplayEvents();
+        //}
         public AddEvent()
         {
             InitializeComponent();
             SampleEvents();
             DisplayEvents();
+
+            // Attach event handler for dropdown selection change
+            categorySearchComboBox.SelectedIndexChanged += new EventHandler(CategorySearchComboBox_SelectedIndexChanged);
         }
 
 
@@ -80,7 +90,7 @@ namespace Municipality_Services_PROG7321_POE
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Submit_Click_1(object sender, EventArgs e)
+        private void Submit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -281,7 +291,7 @@ namespace Municipality_Services_PROG7321_POE
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mediaBtn_Click_1(object sender, EventArgs e)
+        private void mediaBtn_Click(object sender, EventArgs e)
         {
             //using a generic list (data structure) that stores the different medias attached
             List<string> selectedFiles = new List<string>();
@@ -333,27 +343,68 @@ namespace Municipality_Services_PROG7321_POE
         }//__________________________________________________________________________________________________________
 
 
-        private void locationListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void FilterCategory()
+        {
+            string categoryInput = categorySearchComboBox.SelectedItem?.ToString().ToLower();
+
+            var filteredEvents = eventList.Where(x =>
+            (string.IsNullOrEmpty(categoryInput) || x.Category.ToLower() == categoryInput)).ToList();
+
+            DisplayFilteredEvents(filteredEvents);
+        }//__________________________________________________________________________________________________________
+
+        private void DisplayFilteredEvents(List<EventData> filteredEvents)
+        {
+            // Clear the current displayed events before showing filtered results
+            flowLayoutPanel1.Controls.Clear();
+
+            if (!filteredEvents.Any())
+            {
+                MessageBox.Show("No events found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Loop through the filtered events and add them to the panel
+            foreach (var eventItem in filteredEvents)
+            {
+                EventsUserControl eventControl = new EventsUserControl
+                {
+                    EventName = eventItem.Name,
+                    EventCategory = eventItem.Category,
+                    EventDescription = eventItem.Description,
+                    EventLocation = eventItem.Location,
+                    EventTime = eventItem.Time,
+                    EventImage = eventItem.Media
+                };
+
+                //eventControl.Dock = DockStyle.Top;
+                flowLayoutPanel1.Controls.Add(eventControl);
+            }
+        }
+
+
+
+        private void locationListBox_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             ProgressBarUpdate();
         }
 
-        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void dateTimePicker_ValueChanged_1(object sender, EventArgs e)
         {
             ProgressBarUpdate();
         }
 
-        private void descriptionRichTxtBox_TextChanged_1(object sender, EventArgs e)
+        private void descriptionRichTxtBox_TextChanged(object sender, EventArgs e)
         {
             ProgressBarUpdate();
         }
 
-        private void categoryListBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void categoryListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ProgressBarUpdate();
         }
 
-        private void nameTxtBox_TextChanged_1(object sender, EventArgs e)
+        private void nameTxtBox_TextChanged(object sender, EventArgs e)
         {
             ProgressBarUpdate();
         }
@@ -363,6 +414,10 @@ namespace Municipality_Services_PROG7321_POE
             ProgressBarUpdate();
         }
 
+        private void CategorySearchComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterCategory();
+        }
 
     }//____________________________________End of File_______________________________________________________
 }//__________________________________________________________________________________________________________

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Submit = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -47,23 +47,34 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.locationListBox = new System.Windows.Forms.ListBox();
+            this.filePathTxt = new System.Windows.Forms.TextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.categorySearchComboBox = new System.Windows.Forms.ComboBox();
             this.dateTimePickerSearch = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.categoryListBoxSearch = new System.Windows.Forms.ListBox();
-            this.filePathTxt = new System.Windows.Forms.TextBox();
-            this.panel3.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel2.Controls.Add(this.label1);
+            this.flowLayoutPanel2.Controls.Add(this.progressBar);
+            this.flowLayoutPanel2.Controls.Add(this.tableLayoutPanel1);
+            this.flowLayoutPanel2.Controls.Add(this.panel4);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(2, 5);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1293, 779);
+            this.flowLayoutPanel2.TabIndex = 16;
             // 
             // label1
             // 
@@ -72,42 +83,27 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(110)))), ((int)(((byte)(51)))));
-            this.label1.Location = new System.Drawing.Point(145, 15);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(864, 47);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 18;
             this.label1.Text = "Fill in fields to add an event/announcement";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // panel3
+            // progressBar
             // 
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(9, 29);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1145, 65);
-            this.panel3.TabIndex = 12;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 100);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1079, 957);
-            this.flowLayoutPanel1.TabIndex = 15;
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar.Location = new System.Drawing.Point(3, 50);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(1055, 40);
+            this.progressBar.TabIndex = 19;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 590F));
@@ -127,7 +123,7 @@
             this.tableLayoutPanel1.Controls.Add(this.locationListBox, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.filePathTxt, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox, 1, 5);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 96);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.45283F));
@@ -139,8 +135,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1096, 606);
-            this.tableLayoutPanel1.TabIndex = 17;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1055, 606);
+            this.tableLayoutPanel1.TabIndex = 20;
             // 
             // Submit
             // 
@@ -148,13 +144,13 @@
             this.Submit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(138)))), ((int)(((byte)(82)))));
             this.Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Submit.ForeColor = System.Drawing.Color.White;
-            this.Submit.Location = new System.Drawing.Point(909, 554);
+            this.Submit.Location = new System.Drawing.Point(868, 554);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(184, 46);
             this.Submit.TabIndex = 0;
             this.Submit.Text = "Submit";
             this.Submit.UseVisualStyleBackColor = false;
-            this.Submit.Click += new System.EventHandler(this.Submit_Click_1);
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
             // button1
             // 
@@ -168,7 +164,6 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -186,12 +181,12 @@
             this.nameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.nameTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nameTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameTxtBox.Location = new System.Drawing.Point(619, 3);
+            this.nameTxtBox.Location = new System.Drawing.Point(578, 3);
             this.nameTxtBox.Multiline = true;
             this.nameTxtBox.Name = "nameTxtBox";
             this.nameTxtBox.Size = new System.Drawing.Size(474, 35);
             this.nameTxtBox.TabIndex = 1;
-            this.nameTxtBox.TextChanged += new System.EventHandler(this.nameTxtBox_TextChanged_1);
+            this.nameTxtBox.TextChanged += new System.EventHandler(this.nameTxtBox_TextChanged);
             // 
             // label3
             // 
@@ -220,11 +215,11 @@
             "Holiday celebration",
             "Government Service",
             "Alerts"});
-            this.categoryListBox.Location = new System.Drawing.Point(619, 68);
+            this.categoryListBox.Location = new System.Drawing.Point(578, 68);
             this.categoryListBox.Name = "categoryListBox";
             this.categoryListBox.Size = new System.Drawing.Size(474, 32);
             this.categoryListBox.TabIndex = 2;
-            this.categoryListBox.SelectedIndexChanged += new System.EventHandler(this.categoryListBox_SelectedIndexChanged_1);
+            this.categoryListBox.SelectedIndexChanged += new System.EventHandler(this.categoryListBox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -244,32 +239,32 @@
             this.descriptionRichTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.descriptionRichTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionRichTxtBox.ForeColor = System.Drawing.Color.Black;
-            this.descriptionRichTxtBox.Location = new System.Drawing.Point(619, 145);
+            this.descriptionRichTxtBox.Location = new System.Drawing.Point(578, 145);
             this.descriptionRichTxtBox.Name = "descriptionRichTxtBox";
             this.descriptionRichTxtBox.Size = new System.Drawing.Size(474, 49);
             this.descriptionRichTxtBox.TabIndex = 15;
             this.descriptionRichTxtBox.Text = "";
-            this.descriptionRichTxtBox.TextChanged += new System.EventHandler(this.descriptionRichTxtBox_TextChanged_1);
+            this.descriptionRichTxtBox.TextChanged += new System.EventHandler(this.descriptionRichTxtBox_TextChanged);
             // 
             // dateTimePicker
             // 
             this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.dateTimePicker.Location = new System.Drawing.Point(619, 232);
+            this.dateTimePicker.Location = new System.Drawing.Point(578, 232);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(474, 22);
             this.dateTimePicker.TabIndex = 18;
-            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged_1);
             // 
             // mediaBtn
             // 
             this.mediaBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.mediaBtn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mediaBtn.Location = new System.Drawing.Point(619, 284);
+            this.mediaBtn.Location = new System.Drawing.Point(578, 284);
             this.mediaBtn.Name = "mediaBtn";
             this.mediaBtn.Size = new System.Drawing.Size(474, 49);
             this.mediaBtn.TabIndex = 19;
             this.mediaBtn.UseVisualStyleBackColor = true;
-            this.mediaBtn.Click += new System.EventHandler(this.mediaBtn_Click_1);
+            this.mediaBtn.Click += new System.EventHandler(this.mediaBtn_Click);
             // 
             // label5
             // 
@@ -321,66 +316,65 @@
             "Northern Cape",
             "North West",
             "Mpumalanga"});
-            this.locationListBox.Location = new System.Drawing.Point(623, 510);
+            this.locationListBox.Location = new System.Drawing.Point(582, 510);
             this.locationListBox.Name = "locationListBox";
             this.locationListBox.Size = new System.Drawing.Size(470, 32);
             this.locationListBox.TabIndex = 20;
-            this.locationListBox.SelectedIndexChanged += new System.EventHandler(this.locationListBox_SelectedIndexChanged);
+            this.locationListBox.SelectedIndexChanged += new System.EventHandler(this.locationListBox_SelectedIndexChanged_1);
+            // 
+            // filePathTxt
+            // 
+            this.filePathTxt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.filePathTxt.Location = new System.Drawing.Point(3, 412);
+            this.filePathTxt.Name = "filePathTxt";
+            this.filePathTxt.Size = new System.Drawing.Size(459, 22);
+            this.filePathTxt.TabIndex = 22;
             // 
             // pictureBox
             // 
             this.pictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox.Location = new System.Drawing.Point(810, 350);
+            this.pictureBox.Location = new System.Drawing.Point(769, 350);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(283, 145);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 21;
             this.pictureBox.TabStop = false;
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.progressBar);
-            this.panel1.Location = new System.Drawing.Point(3, 615);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1133, 44);
-            this.panel1.TabIndex = 18;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(0, 0);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1115, 40);
-            this.progressBar.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Location = new System.Drawing.Point(3, 665);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1130, 67);
-            this.panel2.TabIndex = 19;
-            // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.categorySearchComboBox);
             this.panel4.Controls.Add(this.dateTimePickerSearch);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.categoryListBoxSearch);
-            this.panel4.Location = new System.Drawing.Point(0, 4);
+            this.panel4.Location = new System.Drawing.Point(3, 708);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1130, 58);
-            this.panel4.TabIndex = 3;
+            this.panel4.Size = new System.Drawing.Size(1292, 58);
+            this.panel4.TabIndex = 4;
+            // 
+            // categorySearchComboBox
+            // 
+            this.categorySearchComboBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.categorySearchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.categorySearchComboBox.FormattingEnabled = true;
+            this.categorySearchComboBox.Items.AddRange(new object[] {
+            "Community meetings",
+            "Festival",
+            "Workshop",
+            "Health and wellness",
+            "Arts and culture",
+            "Volunteer opportunities",
+            "Holiday celebration",
+            "Government Service",
+            "Alerts"});
+            this.categorySearchComboBox.Location = new System.Drawing.Point(852, 22);
+            this.categorySearchComboBox.Name = "categorySearchComboBox";
+            this.categorySearchComboBox.Size = new System.Drawing.Size(328, 24);
+            this.categorySearchComboBox.TabIndex = 6;
             // 
             // dateTimePickerSearch
             // 
-            this.dateTimePickerSearch.Location = new System.Drawing.Point(135, 24);
+            this.dateTimePickerSearch.Location = new System.Drawing.Point(154, 24);
             this.dateTimePickerSearch.Name = "dateTimePickerSearch";
             this.dateTimePickerSearch.Size = new System.Drawing.Size(252, 22);
             this.dateTimePickerSearch.TabIndex = 5;
@@ -399,36 +393,14 @@
             this.label8.Text = "Search :";
             this.label8.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
-            // categoryListBoxSearch
+            // flowLayoutPanel1
             // 
-            this.categoryListBoxSearch.AllowDrop = true;
-            this.categoryListBoxSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.categoryListBoxSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryListBoxSearch.FormattingEnabled = true;
-            this.categoryListBoxSearch.ItemHeight = 28;
-            this.categoryListBoxSearch.Items.AddRange(new object[] {
-            "Community meetings",
-            "Festival",
-            "Workshop",
-            "Health and wellness",
-            "Arts and culture",
-            "Volunteer opportunities",
-            "Holiday celebration",
-            "Government Service",
-            "Alerts"});
-            this.categoryListBoxSearch.Location = new System.Drawing.Point(747, 16);
-            this.categoryListBoxSearch.Name = "categoryListBoxSearch";
-            this.categoryListBoxSearch.Size = new System.Drawing.Size(349, 32);
-            this.categoryListBoxSearch.TabIndex = 4;
-            // 
-            // filePathTxt
-            // 
-            this.filePathTxt.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.filePathTxt.Location = new System.Drawing.Point(3, 412);
-            this.filePathTxt.Name = "filePathTxt";
-            this.filePathTxt.Size = new System.Drawing.Size(500, 22);
-            this.filePathTxt.TabIndex = 22;
-            this.filePathTxt.TextChanged += new System.EventHandler(this.filePathTxt_TextChanged);
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 784);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1415, 222);
+            this.flowLayoutPanel1.TabIndex = 17;
             // 
             // AddEvent
             // 
@@ -437,21 +409,18 @@
             this.AutoScroll = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1415, 781);
-            this.Controls.Add(this.panel3);
+            this.ClientSize = new System.Drawing.Size(1436, 871);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddEvent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddEvent";
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
@@ -459,12 +428,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private SamplePostUserControl eventsUserControl1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Button button1;
@@ -480,14 +448,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox locationListBox;
+        private System.Windows.Forms.TextBox filePathTxt;
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox categorySearchComboBox;
         private System.Windows.Forms.DateTimePicker dateTimePickerSearch;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ListBox categoryListBoxSearch;
-        private System.Windows.Forms.TextBox filePathTxt;
     }
 }
