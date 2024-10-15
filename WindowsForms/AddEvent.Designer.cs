@@ -56,7 +56,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.categoryListBoxSearch = new System.Windows.Forms.ListBox();
             this.filePathTxt = new System.Windows.Forms.TextBox();
-            this.eventsUserControl2 = new Municipality_Services_PROG7321_POE.EventsUserControl();
             this.panel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -100,10 +99,9 @@
             this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel1);
             this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Controls.Add(this.eventsUserControl2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 100);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1100, 957);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1079, 957);
             this.flowLayoutPanel1.TabIndex = 15;
             // 
             // tableLayoutPanel1
@@ -127,8 +125,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.locationListBox, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.filePathTxt, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox, 1, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
@@ -170,6 +168,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -331,9 +330,10 @@
             // pictureBox
             // 
             this.pictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox.Location = new System.Drawing.Point(722, 348);
+            this.pictureBox.Location = new System.Drawing.Point(810, 350);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(371, 149);
+            this.pictureBox.Size = new System.Drawing.Size(283, 145);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 21;
             this.pictureBox.TabStop = false;
             // 
@@ -430,20 +430,6 @@
             this.filePathTxt.TabIndex = 22;
             this.filePathTxt.TextChanged += new System.EventHandler(this.filePathTxt_TextChanged);
             // 
-            // eventsUserControl2
-            // 
-            this.eventsUserControl2.BackColor = System.Drawing.Color.White;
-            this.eventsUserControl2.EventCategory = null;
-            this.eventsUserControl2.EventDescription = null;
-            this.eventsUserControl2.EventImage = null;
-            this.eventsUserControl2.EventLocation = null;
-            this.eventsUserControl2.EventName = null;
-            this.eventsUserControl2.EventTime = new System.DateTime(((long)(0)));
-            this.eventsUserControl2.Location = new System.Drawing.Point(3, 738);
-            this.eventsUserControl2.Name = "eventsUserControl2";
-            this.eventsUserControl2.Size = new System.Drawing.Size(1115, 364);
-            this.eventsUserControl2.TabIndex = 20;
-            // 
             // AddEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -451,7 +437,7 @@
             this.AutoScroll = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1289, 781);
+            this.ClientSize = new System.Drawing.Size(1415, 781);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -502,7 +488,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerSearch;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox categoryListBoxSearch;
-        private EventsUserControl eventsUserControl2;
         private System.Windows.Forms.TextBox filePathTxt;
     }
 }

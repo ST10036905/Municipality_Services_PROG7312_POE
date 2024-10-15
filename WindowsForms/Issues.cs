@@ -66,10 +66,8 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
             // If the user clicks "Yes", proceeds to go back
             if (result == DialogResult.Yes)
-            { 
-                ReportIssues reportForm = new ReportIssues();
+            {
                 this.Close();
-                reportForm.Show();
             }
         }//____________________________________________________________________________________________________________
 

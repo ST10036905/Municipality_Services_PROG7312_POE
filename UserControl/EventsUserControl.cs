@@ -63,7 +63,7 @@ namespace Municipality_Services_PROG7321_POE
         public DateTime EventTime
         {
             get { return _eventTime; }
-            set { _eventTime = value; timeLbl.Text = value.ToString("t"); }
+            set { _eventTime = value; timeLbl.Text = value.ToString("dd/MM/yyyy hh:mm tt"); }  
         }
 
         // Property for Event Image

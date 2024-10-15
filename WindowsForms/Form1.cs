@@ -34,7 +34,11 @@ namespace Municipality_Services_PROG7321_POE
         /// </summary>
         AddEvent eventForm;
 
-        ViewEvents viewForm;
+
+        /// <summary>
+        /// declaring and initializing user control.
+        /// </summary>
+        InformativeUserControl informative = new InformativeUserControl();
 
         /// <summary>
         /// default constructor.
@@ -42,7 +46,9 @@ namespace Municipality_Services_PROG7321_POE
         public Form1()
         {
             InitializeComponent();
-            
+            informative.Dock = DockStyle.Fill;
+            this.Controls.Add(informative);
+            informative.Show();
         }
 
 
@@ -54,6 +60,9 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void reportIssuesBtn_Click(object sender, EventArgs e)
         {
+            // Close or hide the informative user control
+            informative.Hide(); 
+
             if (reportForm == null)
             {
                 reportForm = new ReportIssues();
@@ -82,6 +91,9 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void announcementsBtn_Click(object sender, EventArgs e)
         {
+            // Close or hide the informative user control
+            informative.Hide();
+
             if (eventForm == null)
             {
                 eventForm = new AddEvent();
@@ -97,34 +109,33 @@ namespace Municipality_Services_PROG7321_POE
             }
         }//__________________________________________________________________________________________________________
 
-        private void announcements_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            eventForm = null;
-        }
 
+        /// <summary>
+        /// button used for users to view events. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnViewEvents_Click(object sender, EventArgs e)
         {
-            if (viewForm == null)
-            {
-                viewForm = new ViewEvents();
-                //viewForm.FormClosed += ViewEvents_FormClosed;
+            // Close or hide the informative user control
+            informative.Hide();
 
-                viewForm.MdiParent = this;
-                viewForm.Dock = DockStyle.Fill;
-                viewForm.Show();
+            if (eventForm == null)
+            {
+                eventForm = new AddEvent();
+                eventForm.FormClosed += announcements_FormClosed;
+
+                eventForm.MdiParent = this;
+                eventForm.Dock = DockStyle.Fill;
+                eventForm.Show();
             }
             else
             {
-                viewForm.Activate();
+                eventForm.Activate();
             }
-        }
+        }//__________________________________________________________________________________________________________
 
-        private void ViewEvents_FormClosed(object sender, FormClosingEventArgs e)
-        {
-            viewForm = null;
-        }
 
-        
         /// <summary>
         /// method that redirects user to announcement form.
         /// using an event form object.
@@ -148,6 +159,10 @@ namespace Municipality_Services_PROG7321_POE
             }
         }//__________________________________________________________________________________________________________
 
+        private void announcements_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            eventForm = null;
+        }
 
         /// <summary>
         /// method that redirects user to view latest event form.
@@ -158,6 +173,19 @@ namespace Municipality_Services_PROG7321_POE
         private void latestEventMenuStrip_Click(object sender, EventArgs e)
         {
 
+            if (eventForm == null)
+            {
+                eventForm = new AddEvent();
+                eventForm.FormClosed += announcements_FormClosed;
+
+                eventForm.MdiParent = this;
+                eventForm.Dock = DockStyle.Fill;
+                eventForm.Show();
+            }
+            else
+            {
+                eventForm.Activate();
+            }
         }//__________________________________________________________________________________________________________
 
 

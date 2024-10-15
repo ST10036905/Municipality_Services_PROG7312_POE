@@ -29,6 +29,12 @@ namespace Municipality_Services_PROG7321_POE
         ViewEvents eventWindow;
 
         /// <summary>
+        /// SortedDictionary to organize events by date
+        /// </summary>
+        private SortedDictionary<DateTime, List<EventData>> eventDictionary = new SortedDictionary<DateTime, List<EventData>>();
+
+
+        /// <summary>
         /// constructor for AddEvent class
         /// </summary>
         public AddEvent(List<EventData> events)
@@ -120,7 +126,7 @@ namespace Municipality_Services_PROG7321_POE
                 categoryListBox.SelectedIndex = -1;
                 descriptionRichTxtBox.Clear();
                 dateTimePicker.Value = DateTime.Now;
-                mediaBtn.Text = "";
+                mediaBtn.Image = null;
                 locationListBox.SelectedIndex = -1;
 
                 DisplayEvents();  // Re-display events, including the new one
@@ -153,38 +159,73 @@ namespace Municipality_Services_PROG7321_POE
             }
         }//__________________________________________________________________________________________________________
 
+
+        /// <summary>
+        /// method to create mock events to be displayed in form.
+        /// </summary>
         private void SampleEvents()
         {
 
-            // Create mock events for testing
+            // Create mock events based on the provided categories
             eventList = new List<EventData>
-             {
-                new EventData
+
+            {
+                new EventData(
+                    name: "Community Town Hall Meeting",
+                    category: "Community Meetings",
+                    description: "Discuss upcoming infrastructure projects with local council.",
+                    time: DateTime.Now.AddDays(1),
+                    media: null,
+                    location: "Town Hall",
+                    formattedTime: DateTime.Now.AddDays(1).ToString("dd/MM/yyyy hh:mm tt")
+                ),
+                new EventData(
+                    name: "Annual Music and Food Festival",
+                    category: "Festival",
+                    description: "Experience local bands, food stalls in Rosebank.",
+                    time: DateTime.Now.AddDays(5),
+                    media: null,
+                    location: "Gauteng",
+                    formattedTime: DateTime.Now.AddDays(5).ToString("dd/MM/yyyy hh:mm tt")
+                ),
+                new EventData(
+                    name: "Career Development Workshop",
+                    category: "Workshop",
+                    description: "A workshop on building professional skills and networking.",
+                    time: DateTime.Now.AddDays(3),
+                    media: null,
+                    location: "Community Center",
+                    formattedTime: DateTime.Now.AddDays(3).ToString("dd/MM/yyyy hh:mm tt")
+                ),
+                new EventData(
+                    name: "Beach Clean-Up Volunteer Event",
+                    category: "Volunteer Opportunities",
+                    description: "Join the community in cleaning up the local beach Muizenburg.",
+                    time: DateTime.Now.AddDays(4),
+                    media: null,
+                    location: "Western Cape",
+                    formattedTime: DateTime.Now.AddDays(4).ToString("dd/MM/yyyy hh:mm tt")
+                ),
+                new EventData(
+                    name: "Christmas Holiday Parade",
+                    category: "Holiday Celebration",
+                    description: "Enjoy the festive parade with floats and performers.",
+                    time: DateTime.Now.AddDays(10),
+                    media: null,
+                    location: "All provinces",
+                    formattedTime: DateTime.Now.AddDays(10).ToString("dd/MM/yyyy hh:mm tt")
+                )
+            };
+
+            //Organizing events into the SortedDictionary by date
+            foreach (var eventItem in eventList)
+            {
+                if (!eventDictionary.ContainsKey(eventItem.Time))
                 {
-                    Name = "Music Festival",
-                    Category = "Entertainment",
-                    Description = "A fun-filled music festival with live bands.",
-                    Location = "City Park",
-                    Time = DateTime.Now.AddDays(1) // Tomorrow
-                },
-                new EventData
-                {
-                    Name = "Community Meeting",
-                    Category = "Public",
-                    Description = "A meeting to discuss local issues with the council.",
-                    Location = "Town Hall",
-                    Time = DateTime.Now.AddDays(2) // Day after tomorrow
-                },
-                new EventData
-                {
-                    Name = "Charity Run",
-                    Category = "Charity",
-                    Description = "A marathon to raise funds for local charities.",
-                    Location = "Riverside",
-                    Time = DateTime.Now.AddDays(3) // In three days
+                    eventDictionary[eventItem.Time] = new List<EventData>();
                 }
-             };
-           // DisplayEvents();
+                eventDictionary[eventItem.Time].Add(eventItem);
+            }
         }//__________________________________________________________________________________________________________
 
 
@@ -193,7 +234,7 @@ namespace Municipality_Services_PROG7321_POE
         /// </summary>
         private void DisplayEvents()
         {
-
+            
             foreach (var eventItem in eventList)
             {
                 EventsUserControl eventControl = new EventsUserControl
@@ -270,11 +311,27 @@ namespace Municipality_Services_PROG7321_POE
             }
         }//__________________________________________________________________________________________________________
 
+        /// <summary>
+        /// method user clicks to go back to main menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }//__________________________________________________________________________________________________________
 
-    private void eventWindow_FormClosed(object sender, FormClosedEventArgs e)
+
+        /// <summary>
+        /// method user clicks to close main menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void eventWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             eventWindow = null;
-        }
+        }//__________________________________________________________________________________________________________
+
 
         private void locationListBox_SelectedIndexChanged(object sender, EventArgs e)
         {

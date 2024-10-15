@@ -227,23 +227,6 @@ namespace Municipality_Services_PROG7321_POE
             }
         }//__________________________________________________________________________________________________________
 
-
-        /// <summary>
-        /// button that views all the applications.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void viewBtn_Click_1(object sender, EventArgs e)
-        {
-            // creating an instance of the Issues form and passing the report list.
-            Issues issuesForm = new Issues(reportList);
-
-            this.Close();
-
-            issuesForm.Show();
-        }//__________________________________________________________________________________________________________
-
-
         /// <summary>
         /// calling the method to update progress bar whenever content changes.
         /// </summary>
@@ -317,6 +300,23 @@ namespace Municipality_Services_PROG7321_POE
                 this.Close();
             }
         }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// method that redirects user to view applications.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void viewBtn_Click(object sender, EventArgs e)
+        {
+            // creating an instance of the Issues form and passing the report list.
+            Issues issuesForm = new Issues(reportList);
+
+            this.Close();
+
+            issuesForm.Show();
+        }//__________________________________________________________________________________________________________
+
 
     }//____________________________________End of File_______________________________________________________
 }//__________________________________________________________________________________________________________
