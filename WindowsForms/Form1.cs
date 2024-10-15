@@ -11,17 +11,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //Mayra Selemane
 //ST10036905
-//PROG7321 POE PART 1
+//PROG7321 POE PART 2
 //Class used to manipulate the main form
 
 namespace Municipality_Services_PROG7321_POE
 {
     public partial class Form1 : Form
     {
+
         /// <summary>
         /// declaring an object to represent report form.
         /// </summary>
-        Reporting reportForm;
+        ReportIssues reportForm;
 
         /// <summary>
         /// declaring an object from issues form.
@@ -29,64 +30,20 @@ namespace Municipality_Services_PROG7321_POE
         Issues issuesForm;
 
         /// <summary>
+        /// declaring an object from add events form. 
+        /// </summary>
+        AddEvent eventForm;
+
+        ViewEvents viewForm;
+
+        /// <summary>
         /// default constructor.
         /// </summary>
         public Form1()
         {
             InitializeComponent();
-            InitializeWelcomeUI();
+            
         }
-
-        /// <summary>
-        /// method to initialize the welcoming User Interface.
-        /// </summary>
-        private void InitializeWelcomeUI()
-        {
-
-            // Adding a header panel to the main page
-            Panel headerPanel = new Panel
-            {
-                Size = new Size(this.Width, 80),
-                BackColor = Color.SlateGray,
-                Dock = DockStyle.Top
-            };
-            this.Controls.Add(headerPanel);
-
-            // Adding a label text to the main page
-            Label titleLabel = new Label
-            {
-                Text = "Welcome to Municipal Services",
-                Font = new Font("Segoe UI", 18, FontStyle.Bold),
-                AutoSize = true,
-                ForeColor = Color.White,
-                Location = new Point(20, 25)
-            };
-            headerPanel.Controls.Add(titleLabel);
-        }//__________________________________________________________________________________________________________
-
-
-        /// <summary>
-        /// method that allows user to apply for a report issue with menu strip visible.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void applyNowToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (reportForm == null)
-            {
-                //initializing report object
-                reportForm = new Reporting();
-                //making the object an MDI parent
-                reportForm.MdiParent = this;
-                //filling the form and showing
-                reportForm.Dock = DockStyle.Fill;
-                reportForm.Show();
-            }
-            else
-            {
-                reportForm.Activate();
-            }
-        }//__________________________________________________________________________________________________________
 
 
         /// <summary>
@@ -99,11 +56,10 @@ namespace Municipality_Services_PROG7321_POE
         {
             if (reportForm == null)
             {
-                //initializing report object
-                reportForm = new Reporting();
-                //making the object an MDI parent
+                reportForm = new ReportIssues();
+                reportForm.FormClosed += ReportIssues_FormClosed;
+
                 reportForm.MdiParent = this;
-                //filling the form and showing
                 reportForm.Dock = DockStyle.Fill;
                 reportForm.Show();
             }
@@ -113,62 +69,158 @@ namespace Municipality_Services_PROG7321_POE
             }
         }//__________________________________________________________________________________________________________
 
+        private void ReportIssues_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            reportForm = null;
+        }
 
         /// <summary>
-        /// menu strip user selects to exit.
+        /// method that redirects user to announcement form.
+        /// using an event form object.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void announcementsBtn_Click(object sender, EventArgs e)
+        {
+            if (eventForm == null)
+            {
+                eventForm = new AddEvent();
+                eventForm.FormClosed += announcements_FormClosed;
+
+                eventForm.MdiParent = this;
+                eventForm.Dock = DockStyle.Fill;
+                eventForm.Show();
+            }
+            else
+            {
+                eventForm.Activate();
+            }
+        }//__________________________________________________________________________________________________________
+
+        private void announcements_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            eventForm = null;
+        }
+
+        private void btnViewEvents_Click(object sender, EventArgs e)
+        {
+            if (viewForm == null)
+            {
+                viewForm = new ViewEvents();
+                //viewForm.FormClosed += ViewEvents_FormClosed;
+
+                viewForm.MdiParent = this;
+                viewForm.Dock = DockStyle.Fill;
+                viewForm.Show();
+            }
+            else
+            {
+                viewForm.Activate();
+            }
+        }
+
+        private void ViewEvents_FormClosed(object sender, FormClosingEventArgs e)
+        {
+            viewForm = null;
+        }
+
+        
+        /// <summary>
+        /// method that redirects user to announcement form.
+        /// using an event form object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void localEventsBtn_Click_1(object sender, EventArgs e)
+        {
+            if (eventForm == null)
+            {
+                eventForm = new AddEvent();
+                eventForm.FormClosed += announcements_FormClosed;
+
+                eventForm.MdiParent = this;
+                eventForm.Dock = DockStyle.Fill;
+                eventForm.Show();
+            }
+            else
+            {
+                eventForm.Activate();
+            }
+        }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// method that redirects user to view latest event form.
+        /// using an event form object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void latestEventMenuStrip_Click(object sender, EventArgs e)
+        {
+
+        }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// method that redirects user to close form and application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitMenuStrip_Click(object sender, EventArgs e)
         {
             this.Close();
         }//__________________________________________________________________________________________________________
 
 
         /// <summary>
-        /// button that redirects user to events form.
+        /// method that redirects user to report issues form.
+        /// using an report issues object.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void eventsBtn_Click(object sender, EventArgs e)
+        private void reportAnIssueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Displaying sucess message
-            MessageBox.Show("Maintanace mode. We will be back soon . ", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide();
+            reportForm = new ReportIssues();
+            reportForm.Show();
         }//__________________________________________________________________________________________________________
 
 
         /// <summary>
-        /// button that redirects user to announcements.
+        /// method that redirects user to create event form.
+        /// using an event form object.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void announcementBtn_Click(object sender, EventArgs e)
+        private void createEventToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Displaying sucess message
+            this.Hide();
+            eventForm = new AddEvent();
+            eventForm.Show();
+        }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// about information of the application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Displaying message
+            MessageBox.Show("Application developed by Mayra Selemane: version 1.0 ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }//__________________________________________________________________________________________________________
+
+        /// <summary>
+        /// button for service requests. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void requestsBtn_Click(object sender, EventArgs e)
+        {
+            //Displaying message
             MessageBox.Show("Maintanace mode. We will be back soon . ", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }//__________________________________________________________________________________________________________
 
-
-        private void announcmentsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Displaying message
-            MessageBox.Show("Maintanace mode. We will be back soon .", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }//__________________________________________________________________________________________________________
-        
-
-        private void localEventsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Displaying message
-            MessageBox.Show("Maintanace mode. We will be back soon . ", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }//__________________________________________________________________________________________________________
-
-
-        private void serviceRequestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Displaying message
-            MessageBox.Show("Maintanace mode. We will be back soon . ", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }//__________________________________________________________________________________________________________
-
-       
-    }//_________________________________________________oooooEND OF FILEooooooo___________________________________________
-}//_____________________________________________________________________________________________________________________________
+    }//____________________________________End of File_______________________________________________________
+}//__________________________________________________________________________________________________________

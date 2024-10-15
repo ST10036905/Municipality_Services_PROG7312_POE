@@ -66,22 +66,16 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
 
             // If the user clicks "Yes", proceeds to go back
             if (result == DialogResult.Yes)
-            {
-                // creating an instance of the report form and passing the report list.
-                Reporting reportForm = new Reporting();
-
-                // setting the report form as an MDI child.
-                reportForm.MdiParent = this.MdiParent;
-
-                // docking the form to fill the MDI container.
-                reportForm.Dock = DockStyle.Fill;
-
+            { 
+                ReportIssues reportForm = new ReportIssues();
                 this.Close();
-
                 reportForm.Show();
             }
         }//____________________________________________________________________________________________________________
 
-       
+        //private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+
+        //}
     }//_________________________________________________oooooEND OF FILEooooooo___________________________________________
 }//_____________________________________________________________________________________________________________________________

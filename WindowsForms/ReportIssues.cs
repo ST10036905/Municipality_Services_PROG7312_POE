@@ -1,4 +1,5 @@
 ﻿using Municipality_Services_PROG7321_POE.Classes;
+using Municipality_Services_PROG7321_POE.WindowsForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,15 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //Mayra Selemane
 //ST10036905
-//PROG7321 POE PART 1
-//Class to manipulate report issues form
+//PROG7321 POE PART 2
+//Class used to manipulate the report issues form
 
-namespace Municipality_Services_PROG7321_POE.WindowsForms
+namespace Municipality_Services_PROG7321_POE
 {
-    public partial class Reporting : Form
+    public partial class ReportIssues : Form
     {
+
         /// <summary>
         ///  declaring and instantiating a data structure(list) to store report issues data.
         /// </summary>
@@ -36,23 +39,12 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
         /// <summary>
         /// default constructor used to initialize components and the progress bar (user engagement feature).
         /// </summary>
-        public Reporting()
+        public ReportIssues()
         {
             InitializeComponent();
             progressBar.Value = 0;
             progressBar.Maximum = 100;
             reportList = new List<ReportData>();
-        }//__________________________________________________________________________________________________________
-
-
-        /// <summary>
-        /// form load to display date the current date.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Reporting_Load(object sender, EventArgs e)
-        {
-            lblDate.Text = DateTime.Now.ToString();
         }//__________________________________________________________________________________________________________
 
 
@@ -74,7 +66,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mediaBtn_Click_1(object sender, EventArgs e)
+        private void mediaBtn_Click(object sender, EventArgs e)
         {
             //using a generic list (data structure) that stores the different medias attached
             List<string> selectedFiles = new List<string>();
@@ -110,7 +102,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
         /// </summary>
         /// <returns> true if the validation passes, otherwise false </returns>
         private bool validateInput()
-            {
+        {
             // Validate empty fields, including ListBox selection
             if (string.IsNullOrEmpty(locationTxtBox.Text) ||
                 categoryListBox.SelectedIndex == -1 ||
@@ -246,12 +238,6 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
             // creating an instance of the Issues form and passing the report list.
             Issues issuesForm = new Issues(reportList);
 
-            // setting the Issues form as an MDI child.
-            issuesForm.MdiParent = this.MdiParent; 
-
-            // docking the form to fill the MDI container.
-            issuesForm.Dock = DockStyle.Fill;
-
             this.Close();
 
             issuesForm.Show();
@@ -277,7 +263,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
         private void categoryListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ProgressBarUpdate();
-           
+
             // Check if an item is selected before accessing its value
             if (categoryListBox.SelectedItem != null)
             {
@@ -300,7 +286,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
             }
         }//__________________________________________________________________________________________________________
 
-       
+
         /// <summary>
         /// calling method to update progress bar whenever contents change.
         /// </summary>
@@ -317,7 +303,7 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void backBtn_Click_1(object sender, EventArgs e)
+        private void backBtn_Click(object sender, EventArgs e)
         {
             //displaying a message box so user confirms if they want to go back
             DialogResult result = MessageBox.Show(
@@ -332,6 +318,6 @@ namespace Municipality_Services_PROG7321_POE.WindowsForms
             }
         }//__________________________________________________________________________________________________________
 
-        
-    }//_________________________________________________oooooEND OF FILEooooooo___________________________________________
-}//_____________________________________________________________________________________________________________________________
+    }//____________________________________End of File_______________________________________________________
+}//__________________________________________________________________________________________________________
+

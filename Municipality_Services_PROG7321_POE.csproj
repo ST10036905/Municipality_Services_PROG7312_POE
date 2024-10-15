@@ -46,7 +46,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserControl\EventsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\EventsUserControl.Designer.cs">
+      <DependentUpon>EventsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsForms\AddEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\AddEvent.Designer.cs">
+      <DependentUpon>AddEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\ReportData.cs" />
+    <Compile Include="Classes\EventData.cs" />
+    <Compile Include="UserControl\SamplePostUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\SamplePostUserControl.Designer.cs">
+      <DependentUpon>SamplePostUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\InformativeUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\InformativeUserControl.Designer.cs">
+      <DependentUpon>InformativeUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsForms\ReportIssues.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\ReportIssues.Designer.cs">
+      <DependentUpon>ReportIssues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowsForms\EventsAndAnnouncements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowsForms\EventsAndAnnouncements.Designer.cs">
+      <DependentUpon>EventsAndAnnouncements.cs</DependentUpon>
+    </Compile>
     <Compile Include="WindowsForms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,12 +98,30 @@
     <Compile Include="WindowsForms\Issues.Designer.cs">
       <DependentUpon>Issues.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsForms\Reporting.cs">
+    <Compile Include="WindowsForms\ViewEvents.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\Reporting.Designer.cs">
-      <DependentUpon>Reporting.cs</DependentUpon>
+    <Compile Include="WindowsForms\ViewEvents.Designer.cs">
+      <DependentUpon>ViewEvents.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControl\EventsUserControl.resx">
+      <DependentUpon>EventsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\AddEvent.resx">
+      <DependentUpon>AddEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\SamplePostUserControl.resx">
+      <DependentUpon>SamplePostUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\InformativeUserControl.resx">
+      <DependentUpon>InformativeUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\ReportIssues.resx">
+      <DependentUpon>ReportIssues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowsForms\EventsAndAnnouncements.resx">
+      <DependentUpon>EventsAndAnnouncements.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,8 +137,8 @@
     <EmbeddedResource Include="WindowsForms\Issues.resx">
       <DependentUpon>Issues.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\Reporting.resx">
-      <DependentUpon>Reporting.cs</DependentUpon>
+    <EmbeddedResource Include="WindowsForms\ViewEvents.resx">
+      <DependentUpon>ViewEvents.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
