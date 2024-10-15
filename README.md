@@ -34,9 +34,10 @@ Once the user has entered the data, they can proceed to the submit button which 
 ## To add an event/announcement, all fields should be field in regards to the name of event, category, description, time, media and location. Once the events are entered, user clicks on SUBMIT and the data is held on the 'event List' which is then called and displayed below the page on a layout panel. A sorted dictionary sorts all the events based on date, from the earliest to latest. 
 
 ## Search - the feature is also implemented on the "Add Events". Data is filtered for user to search on a specific event based on the category they select or date and only the specific ones are displayed and captured from the list. 
-Additionally, user engagement feature of the progress bar was added to this form for an interactive use.
 
 ## Should the user click on my recommendation button, a search engine is used to display the most-searched categories, providing personalized suggestions for the user. If the app finds events that match your top searched categories, they will be displayed in a message box notifying or displaying.
+
+Additionally, user engagement feature of the progress bar was added to this form for an interactive use.
 
 Now the project is successfully compiled and run as an application. 
 ***Further implementation - As a wholesome, the following were the features implemented in the following part of the application. Service request features are still to be implemented with additional functionalities. 
