@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//Mayra Selemane
+//ST10036905
+//PROG7321 POE PART 
 namespace Municipality_Services_PROG7321_POE
 {
-    internal static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.

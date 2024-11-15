@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace Municipality_Services_PROG7321_POE
 {
-    public partial class SamplePostUserControl : UserControl
+    public partial class ServiceRequestForm : Form
     {
-        public SamplePostUserControl()
+        public ServiceRequestForm()
         {
             InitializeComponent();
         }
-
     }
 }

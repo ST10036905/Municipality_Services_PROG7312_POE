@@ -1,20 +1,23 @@
 ﻿using Municipality_Services_PROG7321_POE.WindowsForms;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 //Mayra Selemane
 //ST10036905
-//PROG7321 POE PART 2
-//Class used to add an event
+//PROG7321 POE PART 
+//Class used to add events
 
 namespace Municipality_Services_PROG7321_POE
 {
-    public partial class AddEvent : Form
+    public partial class AddEventForm : Form
     {
+
         /// <summary>
         /// declaring an object from eventData class.
         /// </summary>
@@ -29,6 +32,11 @@ namespace Municipality_Services_PROG7321_POE
         /// declaring an object from view events class.
         /// </summary>
         ViewEvents eventWindow;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private Form1 mainFormWindow;
 
         /// <summary>
         /// sortedDictionary to organize events by date
@@ -49,34 +57,29 @@ namespace Municipality_Services_PROG7321_POE
         /// defining a stack to store search history.
         /// </summary>
         private Stack<string> searchHistoryStack = new Stack<string>();
+        private Form1 form1;
+
+        public AddEventForm()
+        {
+            InitializeComponent();
+        }
+
 
         /// <summary>
         /// constructor for AddEvent class.
         /// </summary>
-        public AddEvent(List<EventData> events)
+        public AddEventForm(Form1 mainForm, List<EventData> events)
         {
             InitializeComponent();
             progressBar.Value = 0;
             progressBar.Maximum = 100;
             dateTimePicker.Format = DateTimePickerFormat.Custom;
             dateTimePicker.CustomFormat = "dd/MM/yyyy hh:mm tt";
+            mainFormWindow = mainForm;
             eventList = events;
         }//__________________________________________________________________________________________________________
 
        
-        /// <summary>
-        /// constructor holding parameters.
-        /// </summary>
-        public AddEvent()
-        {
-            InitializeComponent();
-            SampleEvents();
-            DisplayEvents();
-            // Attach event handler for dropdown selection change
-            categorySearchComboBox.SelectedIndexChanged += new EventHandler(CategorySearchComboBox_SelectedIndexChanged);
-        }//__________________________________________________________________________________________________________
-
-
         /// <summary>
         /// method used to validate user input.
         /// </summary>
@@ -88,7 +91,7 @@ namespace Municipality_Services_PROG7321_POE
                 categoryListBox.SelectedIndex == -1 ||
                 string.IsNullOrEmpty(descriptionRichTxtBox.Text) ||
                 locationListBox.SelectedIndex == -1 ||
-                    dateTimePicker.Value ==  null)
+                    dateTimePicker.Value == null)
             {
                 MessageBox.Show("Please fill in all the required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -166,17 +169,7 @@ namespace Municipality_Services_PROG7321_POE
         }//__________________________________________________________________________________________________________
 
 
-        /// <summary>
-        /// method user clicks to close main menu.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void eventWindow_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            eventWindow = null;
-        }//__________________________________________________________________________________________________________
-
-
+       
         /// <summary>
         /// button user clicks to submit events/announcement details.
         /// </summary>
@@ -238,7 +231,7 @@ namespace Municipality_Services_PROG7321_POE
                 // handling any errors during submission
                 MessageBox.Show($"Error during submission: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-          }//__________________________________________________________________________________________________________
+        }//__________________________________________________________________________________________________________
 
 
         /// <summary>
@@ -262,65 +255,7 @@ namespace Municipality_Services_PROG7321_POE
         }//__________________________________________________________________________________________________________
 
 
-        /// <summary>
-        /// method to create mock events to be displayed in form.
-        /// </summary>
-        private void SampleEvents()
-        {
-
-            // creating mock events based on the provided categories
-            eventList = new List<EventData>
-
-            {
-                new EventData(
-                    name: "Community Town Hall Meeting",
-                    category: "Community Meetings",
-                    description: "Discuss upcoming infrastructure projects with local council.",
-                    time: DateTime.Now.AddDays(-1),
-                    media: null,
-                    location: "Town Hall",
-                    formattedTime: DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy hh:mm tt")
-                ),
-                new EventData(
-                    name: "Annual Music and Food Festival",
-                    category: "Festival",
-                    description: "Experience local bands, food stalls in Rosebank.",
-                    time: DateTime.Now.AddDays(-5),
-                    media: null,
-                    location: "Gauteng",
-                    formattedTime: DateTime.Now.AddDays(-5).ToString("dd/MM/yyyy hh:mm tt")
-                ),
-                new EventData(
-                    name: "Career Development Workshop",
-                    category: "Workshop",
-                    description: "A workshop on building professional skills and networking.",
-                    time: DateTime.Now.AddDays(-3),
-                    media: null,
-                    location: "Community Center",
-                    formattedTime: DateTime.Now.AddDays(-3).ToString("dd/MM/yyyy hh:mm tt")
-                ),
-                new EventData(
-                    name: "Beach Clean-Up Volunteer Event",
-                    category: "Volunteer Opportunities",
-                    description: "Join the community in cleaning up the local beach Muizenburg.",
-                    time: DateTime.Now.AddDays(-4),
-                    media: null,
-                    location: "Western Cape",
-                    formattedTime: DateTime.Now.AddDays(-4).ToString("dd/MM/yyyy hh:mm tt")
-                ),
-                new EventData(
-                    name: "Christmas Holiday Parade",
-                    category: "Holiday Celebration",
-                    description: "Enjoy the festive parade with floats and performers.",
-                    time: DateTime.Now.AddDays(-10),
-                    media: null,
-                    location: "All provinces",
-                    formattedTime: DateTime.Now.AddDays(-10).ToString("dd/MM/yyyy hh:mm tt")
-                )
-            };
-
-        }//__________________________________________________________________________________________________________
-
+       
 
         /// <summary>
         /// method to display the events in the panel using a SORTED DICTIONARY.
@@ -348,7 +283,7 @@ namespace Municipality_Services_PROG7321_POE
             }
 
             // clearing any existing controls in the panel to avoid duplicating events.
-            flowLayoutPanel1.Controls.Clear();
+            //part 3 flowLayoutPanel1.Controls.Clear();
 
             // iterating over the sorted event dictionary by date
             foreach (var dateEntry in eventDictionary)
@@ -367,7 +302,7 @@ namespace Municipality_Services_PROG7321_POE
                         EventImage = eventItem.Media
                     };
                     // adding event control to the panel to display in the UI
-                    flowLayoutPanel1.Controls.Add(eventControl);
+                    // part 3 flowLayoutPanel1.Controls.Add(eventControl);
                 }
             }
         }//__________________________________________________________________________________________________________
@@ -429,7 +364,7 @@ namespace Municipality_Services_PROG7321_POE
 
             // filtering events based on the top searched categories
             var recommendedEvents = eventList
-                .Where(e => lowerTopCategories.Contains(e.Category.ToLower())) 
+                .Where(e => lowerTopCategories.Contains(e.Category.ToLower()))
                 .ToList();
 
             return recommendedEvents;
@@ -443,8 +378,8 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void recommendation_Click(object sender, EventArgs e)
         {
-                // showing recommendations after displaying events
-                ShowRecommendations();
+            // showing recommendations after displaying events
+            ShowRecommendations();
         }//__________________________________________________________________________________________________________
 
 
@@ -452,62 +387,62 @@ namespace Municipality_Services_PROG7321_POE
         /// method used to filter based on category of event/announcement.
         /// </summary>
         /// <summary>
-        private void FilterCategory()
-        {
+        //private void FilterCategory()
+        //{
 
-                string categoryInput = categorySearchComboBox.SelectedItem?.ToString().ToLower();
+        //        string categoryInput = categorySearchComboBox.SelectedItem?.ToString().ToLower();
 
-                // updating the search count if a valid category is selected
-                if (!string.IsNullOrEmpty(categoryInput))
-                {
-                    if (searchCounts.ContainsKey(categoryInput))
-                    {
-                        searchCounts[categoryInput]++;
-                    }
-                    else
-                    {
-                        searchCounts[categoryInput] = 1;
-                    }
-                }
+        //        // updating the search count if a valid category is selected
+        //        if (!string.IsNullOrEmpty(categoryInput))
+        //        {
+        //            if (searchCounts.ContainsKey(categoryInput))
+        //            {
+        //                searchCounts[categoryInput]++;
+        //            }
+        //            else
+        //            {
+        //                searchCounts[categoryInput] = 1;
+        //            }
+        //        }
 
-                // filtering events based on selected category
-                var filteredEvents = eventList.Where(x =>
-                    (string.IsNullOrEmpty(categoryInput) || x.Category.ToLower() == categoryInput)).ToList();
+        //        // filtering events based on selected category
+        //        var filteredEvents = eventList.Where(x =>
+        //            (string.IsNullOrEmpty(categoryInput) || x.Category.ToLower() == categoryInput)).ToList();
 
-                DisplayFilteredEvents(filteredEvents);
-        }//__________________________________________________________________________________________________________
+        //        DisplayFilteredEvents(filteredEvents);
+        //}//__________________________________________________________________________________________________________
 
 
         /// <summary>
         /// method to display the filtered results.
         /// </summary>
         /// <param name="filteredEvents">List of filtered events to display.</param>
-        private void DisplayFilteredEvents(List<EventData> filteredEvents)
-        {
-            // clearing the current displayed events before showing filtered results
-            flowLayoutPanel1.Controls.Clear();
+        //private void DisplayFilteredEvents(List<EventData> filteredEvents)
+        //{
+        //    // clearing the current displayed events before showing filtered results
+        //    //part 3 flowLayoutPanel1.Controls.Clear();
 
-            if (!filteredEvents.Any())
-            {
-                MessageBox.Show("No events found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+        //    if (!filteredEvents.Any())
+        //    {
+        //        MessageBox.Show("No events found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return;
+        //    }
 
-            // looping through the filtered events and add them to the panel
-            foreach (var eventItem in filteredEvents)
-            {
-                EventsUserControl eventControl = new EventsUserControl
-                {
-                    EventName = eventItem.Name,
-                    EventCategory = eventItem.Category,
-                    EventDescription = eventItem.Description,
-                    EventLocation = eventItem.Location,
-                    EventTime = eventItem.Time,
-                    EventImage = eventItem.Media
-                };
-                flowLayoutPanel1.Controls.Add(eventControl);
-            }
-        }//________________________________________________________________________________________________________
+        //    // looping through the filtered events and add them to the panel
+        //    foreach (var eventItem in filteredEvents)
+        //    {
+        //        EventsUserControl eventControl = new EventsUserControl
+        //        {
+        //            EventName = eventItem.Name,
+        //            EventCategory = eventItem.Category,
+        //            EventDescription = eventItem.Description,
+        //            EventLocation = eventItem.Location,
+        //            EventTime = eventItem.Time,
+        //            EventImage = eventItem.Media
+        //        };
+        //        flowLayoutPanel1.Controls.Add(eventControl);
+        //    }
+        //}//________________________________________________________________________________________________________
 
         /// <summary>
         /// method to populate unique categories from event data.
@@ -520,7 +455,7 @@ namespace Municipality_Services_PROG7321_POE
             // iterating through the event list and add unique categories to the set
             foreach (var eventItem in eventList)
             {
-                uniqueCategories.Add(eventItem.Category.ToLower());  
+                uniqueCategories.Add(eventItem.Category.ToLower());
             }
         }//__________________________________________________________________________________________________________
 
@@ -534,12 +469,12 @@ namespace Municipality_Services_PROG7321_POE
             PopulateUniqueCategories();
 
             // clearing existing items in the category combo box
-            categorySearchComboBox.Items.Clear();
+            // part 3 categorySearchComboBox.Items.Clear();
 
             // adding unique categories from the HashSet to the combo box
             foreach (var category in uniqueCategories)
             {
-                categorySearchComboBox.Items.Add(category);
+                //part 3 categorySearchComboBox.Items.Add(category);
             }
         }//__________________________________________________________________________________________________________
 
@@ -547,49 +482,49 @@ namespace Municipality_Services_PROG7321_POE
         /// <summary>
         /// method to handle the category search and store the history.
         /// </summary>
-        private void SearchCategory()
-        {
-            string categoryInput = categorySearchComboBox.SelectedItem?.ToString().ToLower();
+        //private void SearchCategory()
+        //{
+        //    //part 3 string categoryInput = categorySearchComboBox.SelectedItem?.ToString().ToLower();
 
-            // pushing the search term onto the stack
-            if (!string.IsNullOrEmpty(categoryInput))
-            {
-                searchHistoryStack.Push(categoryInput);
-            }
+        //    // pushing the search term onto the stack
+        //    if (!string.IsNullOrEmpty(categoryInput))
+        //    {
+        //        searchHistoryStack.Push(categoryInput);
+        //    }
 
-            // filtering events based on the selected category
-            var filteredEvents = eventList.Where(x =>
-                (string.IsNullOrEmpty(categoryInput) || x.Category.ToLower() == categoryInput)).ToList();
+        //    // filtering events based on the selected category
+        //    var filteredEvents = eventList.Where(x =>
+        //        (string.IsNullOrEmpty(categoryInput) || x.Category.ToLower() == categoryInput)).ToList();
 
-            DisplayFilteredEvents(filteredEvents);
-        }//__________________________________________________________________________________________________________
+        //    DisplayFilteredEvents(filteredEvents);
+        //}//__________________________________________________________________________________________________________
 
 
         /// <summary>
         /// method to undo the last search.
         /// </summary>
-        private void UndoLastSearch()
-        {
-            // checking if the stack is not empty
-            if (searchHistoryStack.Count > 0)
-            {
-                // poping the last search term from the stack
-                searchHistoryStack.Pop();
+        //private void UndoLastSearch()
+        //{
+        //    // checking if the stack is not empty
+        //    if (searchHistoryStack.Count > 0)
+        //    {
+        //        // poping the last search term from the stack
+        //        searchHistoryStack.Pop();
 
-                // getting the previous search term, if any
-                string previousSearch = searchHistoryStack.Count > 0 ? searchHistoryStack.Peek() : string.Empty;
+        //        // getting the previous search term, if any
+        //        string previousSearch = searchHistoryStack.Count > 0 ? searchHistoryStack.Peek() : string.Empty;
 
-                // filtering events based on the previous search
-                var filteredEvents = eventList.Where(x =>
-                    (string.IsNullOrEmpty(previousSearch) || x.Category.ToLower() == previousSearch)).ToList();
+        //        // filtering events based on the previous search
+        //        var filteredEvents = eventList.Where(x =>
+        //            (string.IsNullOrEmpty(previousSearch) || x.Category.ToLower() == previousSearch)).ToList();
 
-                DisplayFilteredEvents(filteredEvents);
-            }
-            else
-            {
-                MessageBox.Show("No previous search to undo.", "Undo Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }//__________________________________________________________________________________________________________
+        //        DisplayFilteredEvents(filteredEvents);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("No previous search to undo.", "Undo Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}//__________________________________________________________________________________________________________
 
 
         /// <summary>
@@ -657,38 +592,29 @@ namespace Municipality_Services_PROG7321_POE
             ProgressBarUpdate();
         }//__________________________________________________________________________________________________________
 
-        /// <summary>
-        /// calling method that filters based on combo box.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CategorySearchComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        ///// <summary>
+        ///// calling method that filters based on combo box.
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void CategorySearchComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    FilterCategory();
+        //}//__________________________________________________________________________________________________________
+
+
+        private void viewBtn_Click(object sender, EventArgs e)
         {
-            FilterCategory();
-        }//__________________________________________________________________________________________________________
+            ViewEvents viewEventsForm = new ViewEvents(mainFormWindow, eventList);
+            viewEventsForm.MdiParent = mainFormWindow; // Set the main form as the MDI parent
+            viewEventsForm.Dock = DockStyle.Fill; // Make the child form fill the parent container
+            viewEventsForm.FormBorderStyle = FormBorderStyle.Sizable; // Ensure the form is sizable
+            viewEventsForm.WindowState = FormWindowState.Maximized; // Maximize the child form
+            this.Close();
+            viewEventsForm.Show();
+        }
 
-
-        /// <summary>
-        /// button that redirects user to go back.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            //displaying a message box so user confirms if they want to go back
-            DialogResult result = MessageBox.Show(
-                "Are you sure you want to go back? Any unsaved data will be lost.",
-                "Confirm Back",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            // If the user clicks "Yes", proceeds to go back
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }//__________________________________________________________________________________________________________
 
     }//____________________________________End of File_______________________________________________________
 }//__________________________________________________________________________________________________________
+

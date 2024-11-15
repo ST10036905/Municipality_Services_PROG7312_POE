@@ -46,48 +46,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServiceRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceRequestForm.Designer.cs">
+      <DependentUpon>ServiceRequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEventForm.Designer.cs">
+      <DependentUpon>AddEventForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportIssuesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportIssuesForm.Designer.cs">
+      <DependentUpon>ReportIssuesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceStatusUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ServiceStatusUserControl.Designer.cs">
+      <DependentUpon>ServiceStatusUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\EventsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControl\EventsUserControl.Designer.cs">
       <DependentUpon>EventsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsForms\AddEvent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WindowsForms\AddEvent.Designer.cs">
-      <DependentUpon>AddEvent.cs</DependentUpon>
-    </Compile>
     <Compile Include="Classes\ReportData.cs" />
     <Compile Include="Classes\EventData.cs" />
-    <Compile Include="UserControl\SamplePostUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\SamplePostUserControl.Designer.cs">
-      <DependentUpon>SamplePostUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl\InformativeUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControl\InformativeUserControl.Designer.cs">
-      <DependentUpon>InformativeUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WindowsForms\ReportIssues.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowsForms\ReportIssues.Designer.cs">
-      <DependentUpon>ReportIssues.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WindowsForms\EventsAndAnnouncements.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WindowsForms\EventsAndAnnouncements.Designer.cs">
-      <DependentUpon>EventsAndAnnouncements.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WindowsForms\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WindowsForms\Form1.Designer.cs">
+    <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Program.cs" />
@@ -104,25 +98,22 @@
     <Compile Include="WindowsForms\ViewEvents.Designer.cs">
       <DependentUpon>ViewEvents.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ServiceRequestForm.resx">
+      <DependentUpon>ServiceRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddEventForm.resx">
+      <DependentUpon>AddEventForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportIssuesForm.resx">
+      <DependentUpon>ReportIssuesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceStatusUserControl.resx">
+      <DependentUpon>ServiceStatusUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\EventsUserControl.resx">
       <DependentUpon>EventsUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\AddEvent.resx">
-      <DependentUpon>AddEvent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\SamplePostUserControl.resx">
-      <DependentUpon>SamplePostUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\InformativeUserControl.resx">
-      <DependentUpon>InformativeUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\ReportIssues.resx">
-      <DependentUpon>ReportIssues.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\EventsAndAnnouncements.resx">
-      <DependentUpon>EventsAndAnnouncements.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\Form1.resx">
+    <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

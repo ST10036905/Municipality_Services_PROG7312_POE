@@ -11,18 +11,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //Mayra Selemane
 //ST10036905
-//PROG7321 POE PART 2
+//PROG7321 POE 
 //Class used to manipulate the main form
 
 namespace Municipality_Services_PROG7321_POE
 {
     public partial class Form1 : Form
     {
-
         /// <summary>
         /// declaring an object to represent report form.
         /// </summary>
-        ReportIssues reportForm;
+        ReportIssuesForm reportForm;
 
         /// <summary>
         /// declaring an object from issues form.
@@ -32,13 +31,12 @@ namespace Municipality_Services_PROG7321_POE
         /// <summary>
         /// declaring an object from add events form. 
         /// </summary>
-        AddEvent eventForm;
-
+        AddEventForm eventForm;
 
         /// <summary>
-        /// declaring and initializing user control.
+        /// declaring an object from add events form. 
         /// </summary>
-        InformativeUserControl informative = new InformativeUserControl();
+        ServiceRequestForm requestForm;
 
         /// <summary>
         /// default constructor.
@@ -46,9 +44,7 @@ namespace Municipality_Services_PROG7321_POE
         public Form1()
         {
             InitializeComponent();
-            informative.Dock = DockStyle.Fill;
-            this.Controls.Add(informative);
-            informative.Show();
+            IsMdiContainer = true;
         }
 
 
@@ -61,11 +57,11 @@ namespace Municipality_Services_PROG7321_POE
         private void reportIssuesBtn_Click(object sender, EventArgs e)
         {
             // closing the informative user control
-            informative.Hide(); 
+            //informative.Hide();
 
             if (reportForm == null)
             {
-                reportForm = new ReportIssues();
+                reportForm = new ReportIssuesForm();
                 reportForm.FormClosed += ReportIssues_FormClosed;
 
                 reportForm.MdiParent = this;
@@ -76,12 +72,9 @@ namespace Municipality_Services_PROG7321_POE
             {
                 reportForm.Activate();
             }
-        }//__________________________________________________________________________________________________________
-
-        private void ReportIssues_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            reportForm = null;
         }
+
+       
 
         /// <summary>
         /// method that redirects user to announcement form.
@@ -92,11 +85,11 @@ namespace Municipality_Services_PROG7321_POE
         private void announcementsBtn_Click(object sender, EventArgs e)
         {
             // closing the informative user control
-            informative.Hide();
+            //informative.Hide();
 
             if (eventForm == null)
             {
-                eventForm = new AddEvent();
+                eventForm = new AddEventForm();
                 eventForm.FormClosed += announcements_FormClosed;
 
                 eventForm.MdiParent = this;
@@ -118,11 +111,11 @@ namespace Municipality_Services_PROG7321_POE
         private void btnViewEvents_Click(object sender, EventArgs e)
         {
             // closing the informative user control
-            informative.Hide();
+            //informative.Hide();
 
             if (eventForm == null)
             {
-                eventForm = new AddEvent();
+                eventForm = new AddEventForm();
                 eventForm.FormClosed += announcements_FormClosed;
 
                 eventForm.MdiParent = this;
@@ -145,11 +138,37 @@ namespace Municipality_Services_PROG7321_POE
         private void localEventsBtn_Click_1(object sender, EventArgs e)
         {
             // closing the informative user control
-            informative.Hide();
+            //informative.Hide();
 
             if (eventForm == null)
             {
-                eventForm = new AddEvent();
+                eventForm = new AddEventForm();
+                eventForm.FormClosed += announcements_FormClosed;
+
+                eventForm.MdiParent = this;
+                eventForm.Dock = DockStyle.Fill;
+                eventForm.Show();
+            }
+            else
+            {
+                eventForm.Activate();
+            }
+        }//__________________________________________________________________________________________________________
+
+
+
+        /// <summary>
+        /// method that redirects user to view latest event form.
+        /// using an event form object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void latestEventMenuStrip_Click(object sender, EventArgs e)
+        {
+
+            if (eventForm == null)
+            {
+                eventForm = new AddEventForm();
                 eventForm.FormClosed += announcements_FormClosed;
 
                 eventForm.MdiParent = this;
@@ -164,28 +183,43 @@ namespace Municipality_Services_PROG7321_POE
 
 
         /// <summary>
-        /// closing form.
+        /// method that redirects user to report issues form.
+        /// using an report issues object.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void announcements_FormClosed(object sender, FormClosedEventArgs e)
+        private void reportAnIssueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eventForm = null;
+            // closing the informative user control
+            //informative.Hide();
+
+            if (reportForm == null)
+            {
+                reportForm = new ReportIssuesForm();
+                reportForm.FormClosed += ReportIssues_FormClosed;
+
+                reportForm.MdiParent = this;
+                reportForm.Dock = DockStyle.Fill;
+                reportForm.Show();
+            }
+            else
+            {
+                reportForm.Activate();
+            }
         }//__________________________________________________________________________________________________________
 
 
         /// <summary>
-        /// method that redirects user to view latest event form.
+        /// method that redirects user to create event form.
         /// using an event form object.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void latestEventMenuStrip_Click(object sender, EventArgs e)
+        private void createEventToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             if (eventForm == null)
             {
-                eventForm = new AddEvent();
+                eventForm = new AddEventForm();
                 eventForm.FormClosed += announcements_FormClosed;
 
                 eventForm.MdiParent = this;
@@ -206,35 +240,29 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void exitMenuStrip_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }//__________________________________________________________________________________________________________
 
 
         /// <summary>
-        /// method that redirects user to report issues form.
-        /// using an report issues object.
+        /// closing form.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void reportAnIssueToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ReportIssues_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            reportForm = new ReportIssues();
-            reportForm.Show();
+            reportForm = null;
         }//__________________________________________________________________________________________________________
 
 
         /// <summary>
-        /// method that redirects user to create event form.
-        /// using an event form object.
+        /// closing form.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void createEventToolStripMenuItem_Click(object sender, EventArgs e)
+        private void announcements_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            eventForm = new AddEvent();
-            eventForm.Show();
+            eventForm = null;
         }//__________________________________________________________________________________________________________
 
 
@@ -246,8 +274,9 @@ namespace Municipality_Services_PROG7321_POE
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Displaying message
-            MessageBox.Show("Application developed by Mayra Selemane: version 1.0 ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Application developed by Mayra Selemane: POE PART #3", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }//__________________________________________________________________________________________________________
+
 
         /// <summary>
         /// button for service requests. 
@@ -256,8 +285,48 @@ namespace Municipality_Services_PROG7321_POE
         /// <param name="e"></param>
         private void requestsBtn_Click(object sender, EventArgs e)
         {
-            //displaying message
-            MessageBox.Show("Maintanace mode. We will be back soon . ", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (requestForm == null)
+            {
+                requestForm = new ServiceRequestForm();
+                requestForm.FormClosed += serviceRequest_FormClosed;
+
+                requestForm.MdiParent = this;
+                requestForm.Dock = DockStyle.Fill;
+                requestForm.Show();
+            }
+            else
+            {
+                requestForm.Activate();
+            }
+        }//__________________________________________________________________________________________________________
+
+
+        private void serviceRequest_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            requestForm = null;
+        }//__________________________________________________________________________________________________________
+
+
+        /// <summary>
+        /// toolstrip for service request. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void serviceRequestsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (requestForm == null)
+            {
+                requestForm = new ServiceRequestForm();
+                requestForm.FormClosed += serviceRequest_FormClosed;
+
+                requestForm.MdiParent = this;
+                requestForm.Dock = DockStyle.Fill;
+                requestForm.Show();
+            }
+            else
+            {
+                requestForm.Activate();
+            }
         }//__________________________________________________________________________________________________________
 
     }//____________________________________End of File_______________________________________________________

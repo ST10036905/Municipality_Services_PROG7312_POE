@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 //Mayra Selemane
 //ST10036905
-//PROG7321 POE PART 2
+//PROG7321 POE PART 
 //Class used to store event data
 
 namespace Municipality_Services_PROG7321_POE
@@ -35,7 +35,7 @@ namespace Municipality_Services_PROG7321_POE
             /// </summary>
             public EventData() 
              {
-              }
+             }
 
             /// <summary>
             /// parameterised constructor.

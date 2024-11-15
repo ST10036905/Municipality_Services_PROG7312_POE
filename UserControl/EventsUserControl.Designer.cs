@@ -192,9 +192,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(354, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 34);
+            this.label1.Size = new System.Drawing.Size(208, 34);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Latest Post";
+            this.label1.Text = "Latest updates";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // EventsUserControl

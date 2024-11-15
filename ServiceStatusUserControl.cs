@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Municipality_Services_PROG7321_POE
 {
-    public partial class EventsAndAnnouncements : Form
+    public partial class ServiceStatusUserControl : UserControl
     {
-        public EventsAndAnnouncements()
+        public ServiceStatusUserControl()
         {
             InitializeComponent();
         }
