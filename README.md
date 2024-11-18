@@ -1,8 +1,9 @@
-***Mayra Selemane
-***ST10036905
-***Municipality services application
-***Read-Me file
-***18/11/2024
+## Author : Mayra Selemane
+## Student : ST10036905
+## Project : Municipality services application
+## Course : PROG7312
+## Read-Me file
+## 18/11/2024
 
 GitHub repository : https://github.com/ST10036905/Municipality_Services_PROG7312_POE.git
 
@@ -28,7 +29,7 @@ git clone https://github.com/ST10036905/Municipality_Services_PROG7312_POE.git
 
 This command will download the entire project to your local machine.
 
-Steps on how to run and compile the application :
+## Steps on how to run and compile the application :
 1 - Opening the folder on visual studio - The user should first have visual studio installed. The following folder should be extracted and visual studio opened. Once you open visual studio, select open a project or solution from the start screen and proceed to opening the folder by navigating to the .sln fine, which is the solution file. 
 2 - Building the project - Once the project is loaded, there is a menu on the top with the Build option which should be selected, as follows, Build > Build solution. With this process, visual studio will compile the application which means that if there are any errors or warning, they will be displayed and hints for their resolutions provided, as to ensure a smooth running process.
 3 - Run the application - Once the project is successfully built, any warning and errors resolved, the user can then run the application by clicking on Debug > Start without debugging , which will run the application.
