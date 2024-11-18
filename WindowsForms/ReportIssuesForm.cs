@@ -261,7 +261,8 @@ namespace Municipality_Services_PROG7321_POE
             try
             {
                 DialogResult result = MessageBox.Show("Are you sure you want to go back?", "Confirm Back", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes) this.Close();
+                if (result == DialogResult.Yes) 
+               this.Close();
             }
             catch (Exception ex)
             {

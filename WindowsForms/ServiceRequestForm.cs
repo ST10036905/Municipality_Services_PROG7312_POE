@@ -20,6 +20,11 @@ namespace Municipality_Services_PROG7321_POE
         private Dictionary<string, ReportData> requestDictionary;
 
         /// <summary>
+        /// Declaring an instance of binary search tree class.
+        /// </summary>
+        private BinarySearchTree bst;
+
+        /// <summary>
         /// Predefined progress statuses based on service category
         /// </summary>
         private Dictionary<string, string> predefinedProgress = new Dictionary<string, string>()
@@ -39,8 +44,17 @@ namespace Municipality_Services_PROG7321_POE
             {
                 InitializeComponent();
 
+                // Initializing the binary search tree
+                bst = new BinarySearchTree();
+
                 // Generate dummy reports
                 Queue<ReportData> dummyReports = GenerateDummyReports();
+
+                // Insert the dummy reports into the binary search tree
+                foreach (var report in dummyReports)
+                {
+                    bst.Insert(report);
+                }
 
                 // Populate the dictionary with the dummy reports, using RequestID as the key
                 requestDictionary = dummyReports.ToDictionary(r => r.RequestID, r => r);
@@ -96,51 +110,12 @@ namespace Municipality_Services_PROG7321_POE
         }
 
         /// <summary>
-        /// Event handler for search button click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void searchBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string requestId = searchId.Text.Trim();
-
-                // Check if the Request ID is empty
-                if (string.IsNullOrEmpty(requestId))
-                {
-                    MessageBox.Show("Please enter a Request ID to search.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Search for the report by Request ID
-                var foundReport = requestDictionary.FirstOrDefault(r => r.Key == requestId).Value;
-
-                // If the report is found, display it in the DataGridView, else show all reports
-                if (foundReport != null)
-                {
-                    serviceRequestsGridView.DataSource = new BindingList<ReportData>(new List<ReportData> { foundReport });
-                }
-                else
-                {
-                    MessageBox.Show("Report not found. Displaying all data.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    serviceRequestsGridView.DataSource = new BindingList<ReportData>(requestDictionary.Values.ToList());
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred during the search operation: {ex.Message}", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        /// <summary>
         /// Method to update the status of each request based on predefined progress
         /// </summary>
         private void UpdateRequestStatus()
         {
             try
             {
-                // Iterate through each request and update the status if the category matches
                 foreach (var key in requestDictionary.Keys.ToList())
                 {
                     var report = requestDictionary[key];
@@ -261,6 +236,7 @@ namespace Municipality_Services_PROG7321_POE
                         Status = "Pending"
                     }
                 });
+         
             }
             catch (Exception ex)
             {
@@ -315,9 +291,7 @@ namespace Municipality_Services_PROG7321_POE
         /// <summary>
         /// Event handler for TreeView node selection
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void serviceRequestsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        private void serviceTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             try
             {
@@ -337,6 +311,81 @@ namespace Municipality_Services_PROG7321_POE
                 MessageBox.Show($"An error occurred while displaying the report details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// Event handler for search button click
+        /// </summary>
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string requestId = searchId.Text.Trim();
+                string category = categoryComboBox.SelectedItem?.ToString();
+                string status = statusComboBox.SelectedItem?.ToString();
+                DateTime? startDate = startDatePicker.Value;
+                DateTime? endDate = endDatePicker.Value;
+
+                // Filter the reports using BST or LINQ
+                List<ReportData> filteredReports = bst.InOrderTraversal()
+                    .Where(r =>
+                        (string.IsNullOrEmpty(requestId) || r.RequestID.Contains(requestId)) &&
+                        (string.IsNullOrEmpty(category) || r.Category.Contains(category)) &&
+                        (string.IsNullOrEmpty(status) || r.Status.Contains(status)) &&
+                        (!startDate.HasValue || r.SubmissionDate >= startDate.Value) &&
+                        (!endDate.HasValue || r.SubmissionDate <= endDate.Value))
+                    .ToList();
+
+                // Bind the filtered reports to the DataGridView
+                serviceRequestsGridView.DataSource = new BindingList<ReportData>(filteredReports);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while searching: {ex.Message}", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Handler for button that user clicks to reset the service requests search.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Clear the search filters (e.g., text boxes, combo boxes)
+                searchId.Text = "";
+                categoryComboBox.SelectedIndex = -1;
+                statusComboBox.SelectedIndex = -1;
+                startDatePicker.Value = DateTime.Now;
+                endDatePicker.Value = DateTime.Now;
+
+                // Reset the Binary Search Tree (instead of setting to null)
+                bst = new BinarySearchTree();
+
+                // Reinsert the dummy reports (if needed)
+                Queue<ReportData> dummyReports = GenerateDummyReports();
+                foreach (var report in dummyReports)
+                {
+                    bst.Insert(report);
+                }
+
+                // Clear the DataGridView by setting DataSource to null
+                serviceRequestsGridView.DataSource = null;
+
+                // Optionally, you may re-bind the DataGridView if necessary
+                serviceRequestsGridView.DataSource = new BindingList<ReportData>(dummyReports.ToList());
+
+                // Reset any other UI elements if necessary
+                BuildServiceTree(); // Rebuild the tree view if needed
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while resetting the search: {ex.Message}", "Reset Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
     }//________________________________________________________End of File___________________________________________________________________________________
 }//___________________________________________________________________________________________________________________________________________________________
