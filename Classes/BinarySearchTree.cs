@@ -31,7 +31,7 @@ namespace Municipality_Services_PROG7321_POE.Classes
 
         public BinarySearchTree()
         {
-            root = null;  // Initially, the tree is empty
+            root = null;  
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Municipality_Services_PROG7321_POE.Classes
         /// <param name="data">The ReportData object to be inserted into the tree.</param>
         public void Insert(ReportData data)
         {
-            root = InsertRec(root, data);  // Call the recursive insert method
+            root = InsertRec(root, data);  
         }
 
         /// <summary>
@@ -53,15 +53,15 @@ namespace Municipality_Services_PROG7321_POE.Classes
         {
             if (root == null)
             {
-                root = new TreeNode(data);  // Create a new node if root is null
-                return root;  // Return the new node
+                root = new TreeNode(data);  
+                return root;  
             }
 
             // Compare the RequestID of the current node with the new data's RequestID
             if (string.Compare(data.RequestID, root.Data.RequestID) < 0)
-                root.Left = InsertRec(root.Left, data);  // Insert into the left subtree
+                root.Left = InsertRec(root.Left, data); 
             else if (string.Compare(data.RequestID, root.Data.RequestID) > 0)
-                root.Right = InsertRec(root.Right, data);  // Insert into the right subtree
+                root.Right = InsertRec(root.Right, data);  
 
             return root;  
         }

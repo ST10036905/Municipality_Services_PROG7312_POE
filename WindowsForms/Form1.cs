@@ -160,7 +160,7 @@ namespace Municipality_Services_PROG7321_POE
         {
             try
             {
-                MessageBox.Show("Application developed by Mayra Selemane: PROG7321 POE PART #3", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Application developed by Mayra Selemane: PROG7312 POE PART #3", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

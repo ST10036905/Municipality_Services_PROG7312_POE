@@ -40,6 +40,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.searchBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.searchHistoryBtn = new System.Windows.Forms.Button();
+            this.searchTxtBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.resetBtn = new System.Windows.Forms.Button();
             this.dateFilter = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,9 +53,6 @@
             this.filePathTxt = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label3 = new System.Windows.Forms.Label();
-            this.searchTxtBox = new System.Windows.Forms.TextBox();
-            this.searchHistoryBtn = new System.Windows.Forms.Button();
             this.addEventPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.informationPanel.SuspendLayout();
@@ -202,6 +202,40 @@
             this.panel2.Size = new System.Drawing.Size(1315, 98);
             this.panel2.TabIndex = 55;
             // 
+            // searchHistoryBtn
+            // 
+            this.searchHistoryBtn.BackColor = System.Drawing.Color.ForestGreen;
+            this.searchHistoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.searchHistoryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchHistoryBtn.ForeColor = System.Drawing.Color.White;
+            this.searchHistoryBtn.Location = new System.Drawing.Point(783, 59);
+            this.searchHistoryBtn.Name = "searchHistoryBtn";
+            this.searchHistoryBtn.Size = new System.Drawing.Size(238, 31);
+            this.searchHistoryBtn.TabIndex = 57;
+            this.searchHistoryBtn.Text = "Search history";
+            this.toolTip1.SetToolTip(this.searchHistoryBtn, "View search history");
+            this.searchHistoryBtn.UseVisualStyleBackColor = false;
+            this.searchHistoryBtn.Click += new System.EventHandler(this.searchHistoryBtn_Click);
+            // 
+            // searchTxtBox
+            // 
+            this.searchTxtBox.Location = new System.Drawing.Point(958, 23);
+            this.searchTxtBox.Name = "searchTxtBox";
+            this.searchTxtBox.Size = new System.Drawing.Size(255, 22);
+            this.searchTxtBox.TabIndex = 56;
+            this.toolTip1.SetToolTip(this.searchTxtBox, "Enter keyword for your search ");
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label3.Location = new System.Drawing.Point(754, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(206, 24);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Search by keyword : ";
+            // 
             // resetBtn
             // 
             this.resetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -311,39 +345,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label3.Location = new System.Drawing.Point(754, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(206, 24);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Search by keyword : ";
-            // 
-            // searchTxtBox
-            // 
-            this.searchTxtBox.Location = new System.Drawing.Point(958, 23);
-            this.searchTxtBox.Name = "searchTxtBox";
-            this.searchTxtBox.Size = new System.Drawing.Size(255, 22);
-            this.searchTxtBox.TabIndex = 56;
-            // 
-            // searchHistoryBtn
-            // 
-            this.searchHistoryBtn.BackColor = System.Drawing.Color.ForestGreen;
-            this.searchHistoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.searchHistoryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchHistoryBtn.ForeColor = System.Drawing.Color.White;
-            this.searchHistoryBtn.Location = new System.Drawing.Point(783, 59);
-            this.searchHistoryBtn.Name = "searchHistoryBtn";
-            this.searchHistoryBtn.Size = new System.Drawing.Size(238, 31);
-            this.searchHistoryBtn.TabIndex = 57;
-            this.searchHistoryBtn.Text = "Search history";
-            this.toolTip1.SetToolTip(this.searchHistoryBtn, "View search history");
-            this.searchHistoryBtn.UseVisualStyleBackColor = false;
-            this.searchHistoryBtn.Click += new System.EventHandler(this.searchHistoryBtn_Click);
             // 
             // AddEventForm
             // 

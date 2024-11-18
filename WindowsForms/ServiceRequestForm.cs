@@ -319,30 +319,58 @@ namespace Municipality_Services_PROG7321_POE
         {
             try
             {
+                // Collect the filter values from the UI
                 string requestId = searchId.Text.Trim();
                 string category = categoryComboBox.SelectedItem?.ToString();
                 string status = statusComboBox.SelectedItem?.ToString();
                 DateTime? startDate = startDatePicker.Value;
                 DateTime? endDate = endDatePicker.Value;
 
-                // Filter the reports using BST or LINQ
-                List<ReportData> filteredReports = bst.InOrderTraversal()
+                // Debugging output to ensure filter values
+                Console.WriteLine($"Search Criteria: RequestId={requestId}, Category={category}, Status={status}, StartDate={startDate}, EndDate={endDate}");
+
+                // Ensure bst has data
+                List<ReportData> allReports = bst.InOrderTraversal();
+                if (allReports.Count == 0)
+                {
+                    MessageBox.Show("No reports available in the system.", "Empty Report Tree", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Filter the reports using LINQ with case-insensitive comparison
+                List<ReportData> filteredReports = allReports
                     .Where(r =>
-                        (string.IsNullOrEmpty(requestId) || r.RequestID.Contains(requestId)) &&
-                        (string.IsNullOrEmpty(category) || r.Category.Contains(category)) &&
-                        (string.IsNullOrEmpty(status) || r.Status.Contains(status)) &&
+                        // Check Request ID (case-insensitive)
+                        (string.IsNullOrEmpty(requestId) || r.RequestID.Equals(requestId, StringComparison.OrdinalIgnoreCase)) &&
+
+                        // Check Category (case-insensitive)
+                        (string.IsNullOrEmpty(category) || r.Category.Equals(category, StringComparison.OrdinalIgnoreCase)) &&
+
+                        // Check Status (case-insensitive)
+                        (string.IsNullOrEmpty(status) || r.Status.Equals(status, StringComparison.OrdinalIgnoreCase)) &&
+
+                        // Check Date Range
                         (!startDate.HasValue || r.SubmissionDate >= startDate.Value) &&
-                        (!endDate.HasValue || r.SubmissionDate <= endDate.Value))
+                        (!endDate.HasValue || r.SubmissionDate <= endDate.Value)
+                    )
                     .ToList();
+
+                // If no reports match the search criteria
+                if (filteredReports.Count == 0)
+                {
+                    MessageBox.Show("No reports match the search criteria.", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 // Bind the filtered reports to the DataGridView
                 serviceRequestsGridView.DataSource = new BindingList<ReportData>(filteredReports);
             }
             catch (Exception ex)
             {
+                // Display any errors that occur
                 MessageBox.Show($"An error occurred while searching: {ex.Message}", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         /// <summary>
         /// Handler for button that user clicks to reset the service requests search.
@@ -373,12 +401,10 @@ namespace Municipality_Services_PROG7321_POE
                 // Clear the DataGridView by setting DataSource to null
                 serviceRequestsGridView.DataSource = null;
 
-                // Optionally, you may re-bind the DataGridView if necessary
+                // Re-binding the DataGridView 
                 serviceRequestsGridView.DataSource = new BindingList<ReportData>(dummyReports.ToList());
 
-                // Reset any other UI elements if necessary
-                BuildServiceTree(); // Rebuild the tree view if needed
-            }
+             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred while resetting the search: {ex.Message}", "Reset Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
