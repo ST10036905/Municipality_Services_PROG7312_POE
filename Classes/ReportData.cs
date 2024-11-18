@@ -54,5 +54,24 @@ namespace Municipality_Services_PROG7321_POE.Classes
             Status = status;
         } //__________________________________________________________________________________________________________
 
+        /// <summary>
+        /// generating a second parameterised constructor to be used in service requests.
+        /// </summary>
+        /// <param name="requestID"></param>
+        /// <param name="location"></param>
+        /// <param name="category"></param>
+        /// <param name="description"></param>
+        /// <param name="submissionDate"></param>
+        /// <param name="status"></param>
+        public ReportData(string requestID, string location, string category, string description, DateTime submissionDate, string status)
+        {
+            RequestID = requestID;
+            Location = location;
+            Category = category;
+            Description = description;
+            SubmissionDate = submissionDate;
+            Status = status;
+        } //__________________________________________________________________________________________________________
+
     }//_________________________________________________oooooEND OF FILEooooooo___________________________________________
 }//_____________________________________________________________________________________________________________________________

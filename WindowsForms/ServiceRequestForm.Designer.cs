@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.serviceRequestPanel = new System.Windows.Forms.Panel();
             this.serviceTreeView = new System.Windows.Forms.TreeView();
             this.statusPanel = new System.Windows.Forms.Panel();
@@ -49,7 +49,7 @@
             this.searchLbl = new System.Windows.Forms.Label();
             this.description = new System.Windows.Forms.Label();
             this.Title = new System.Windows.Forms.Label();
-            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.serviceRequestPanel.SuspendLayout();
             this.statusPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.serviceRequestsGridView)).BeginInit();
@@ -98,42 +98,40 @@
             this.serviceRequestsGridView.BackgroundColor = System.Drawing.Color.Tan;
             this.serviceRequestsGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.serviceRequestsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.serviceRequestsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.serviceRequestsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.serviceRequestsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.serviceRequestsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Location});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.serviceRequestsGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.serviceRequestsGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.serviceRequestsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serviceRequestsGridView.GridColor = System.Drawing.Color.SaddleBrown;
             this.serviceRequestsGridView.Location = new System.Drawing.Point(0, 0);
             this.serviceRequestsGridView.Name = "serviceRequestsGridView";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.serviceRequestsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.serviceRequestsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.serviceRequestsGridView.RowHeadersWidth = 100;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            this.serviceRequestsGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.serviceRequestsGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.serviceRequestsGridView.RowTemplate.Height = 24;
             this.serviceRequestsGridView.Size = new System.Drawing.Size(681, 393);
             this.serviceRequestsGridView.TabIndex = 0;
@@ -169,16 +167,17 @@
             "Complete",
             "Pending",
             "In progress"});
-            this.categoryComboBox.Location = new System.Drawing.Point(1116, 153);
+            this.categoryComboBox.Location = new System.Drawing.Point(1113, 153);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(172, 24);
             this.categoryComboBox.TabIndex = 62;
+            this.toolTip1.SetToolTip(this.categoryComboBox, "Select category of issue");
             // 
             // categoryLbl
             // 
             this.categoryLbl.AutoSize = true;
             this.categoryLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryLbl.Location = new System.Drawing.Point(1004, 151);
+            this.categoryLbl.Location = new System.Drawing.Point(996, 151);
             this.categoryLbl.Name = "categoryLbl";
             this.categoryLbl.Size = new System.Drawing.Size(120, 23);
             this.categoryLbl.TabIndex = 61;
@@ -186,16 +185,17 @@
             // 
             // dateTimeFilter
             // 
-            this.dateTimeFilter.Location = new System.Drawing.Point(789, 151);
+            this.dateTimeFilter.Location = new System.Drawing.Point(785, 151);
             this.dateTimeFilter.Name = "dateTimeFilter";
             this.dateTimeFilter.Size = new System.Drawing.Size(200, 22);
             this.dateTimeFilter.TabIndex = 60;
+            this.toolTip1.SetToolTip(this.dateTimeFilter, "Select date that request was issued");
             // 
             // dateLbl
             // 
             this.dateLbl.AutoSize = true;
             this.dateLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateLbl.Location = new System.Drawing.Point(719, 148);
+            this.dateLbl.Location = new System.Drawing.Point(715, 148);
             this.dateLbl.Name = "dateLbl";
             this.dateLbl.Size = new System.Drawing.Size(68, 23);
             this.dateLbl.TabIndex = 59;
@@ -212,6 +212,7 @@
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(261, 24);
             this.statusComboBox.TabIndex = 58;
+            this.toolTip1.SetToolTip(this.statusComboBox, "Select a status for your search");
             // 
             // filterLbl
             // 
@@ -229,6 +230,7 @@
             this.searchId.Name = "searchId";
             this.searchId.Size = new System.Drawing.Size(216, 22);
             this.searchId.TabIndex = 56;
+            this.toolTip1.SetToolTip(this.searchId, "Search using a specific ID");
             // 
             // searchLbl
             // 
@@ -266,17 +268,6 @@
             this.Title.TabIndex = 53;
             this.Title.Text = "Service Request Status";
             this.Title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // Location
-            // 
-            this.Location.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Location.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Location.HeaderText = "Location";
-            this.Location.MinimumWidth = 9;
-            this.Location.Name = "Location";
-            this.Location.Width = 87;
             // 
             // ServiceRequestForm
             // 
@@ -316,6 +307,6 @@
         private System.Windows.Forms.Panel statusPanel;
         private System.Windows.Forms.DataGridView serviceRequestsGridView;
         private System.Windows.Forms.TreeView serviceTreeView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

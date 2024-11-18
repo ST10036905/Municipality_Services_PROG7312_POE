@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+
 // Mayra Selemane
 // ST10036905
 // PROG7312 POE
@@ -13,11 +14,19 @@ namespace Municipality_Services_PROG7321_POE
 {
     public partial class ReportIssuesForm : Form
     {
+        /// <summary>
+        /// declaring a list to store the reports submitted by users.
+        /// </summary>
         private List<ReportData> reportList = new List<ReportData>();
-        Form1 mainForm;
-        ReportData newReport;
-        ServiceRequestForm requestForm;
 
+        /// <summary>
+        /// declaring an instance if reportdata class.
+        /// </summary>
+        ReportData newReport;
+
+        /// <summary>
+        /// generating resolution times for each category of service using a dictionary.
+        /// </summary>
         private Dictionary<string, string> estimatedTimes = new Dictionary<string, string>()
         {
             { "Sanitation", "1-2 days" },
@@ -26,6 +35,9 @@ namespace Municipality_Services_PROG7321_POE
             { "Public Safety", "Immediate attention" }
         };
 
+        /// <summary>
+        /// Initializes the ReportIssuesForm, setting up the progress bar and report list.
+        /// </summary>
         public ReportIssuesForm()
         {
             InitializeComponent();
@@ -34,54 +46,84 @@ namespace Municipality_Services_PROG7321_POE
             reportList = new List<ReportData>();
         }
 
+        /// <summary>
+        /// Handles media file selection for the issue report.
+        /// Allows multiple file selections and displays a preview of the first image.
+        /// </summary>
         private void mediaBtn_Click_1(object sender, EventArgs e)
         {
-            List<string> selectedFiles = new List<string>();
-
-            openFileDialog1.Filter = "Document Files|*.docx;*.pdf;*.txt|Image Files|*.jpg;*.jpeg;*.png|All Files|*.*";
-            openFileDialog1.Title = "Select media to be attached";
-            openFileDialog1.Multiselect = true;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                selectedFiles = openFileDialog1.FileNames.ToList();
-                filePathTxt.Text = string.Join(", ", selectedFiles);
+                List<string> selectedFiles = new List<string>();
 
-                string firstFile = selectedFiles.FirstOrDefault(f => f.EndsWith(".jpg") || f.EndsWith(".jpeg") || f.EndsWith(".png"));
-                if (firstFile != null)
+                openFileDialog1.Filter = "Document Files|*.docx;*.pdf;*.txt|Image Files|*.jpg;*.jpeg;*.png|All Files|*.*";
+                openFileDialog1.Title = "Select media to be attached";
+                openFileDialog1.Multiselect = true;
+
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    try
+                    selectedFiles = openFileDialog1.FileNames.ToList();
+                    filePathTxt.Text = string.Join(", ", selectedFiles);
+
+                    string firstFile = selectedFiles.FirstOrDefault(f => f.EndsWith(".jpg") || f.EndsWith(".jpeg") || f.EndsWith(".png"));
+                    if (firstFile != null)
                     {
-                        pictureBox.Image = Image.FromFile(firstFile);
+                        try
+                        {
+                            pictureBox.Image = Image.FromFile(firstFile); // Display the image
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Error loading image preview.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
-                    catch
-                    {
-                        MessageBox.Show("Error loading image preview.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+
+                    ProgressBarUpdate();
                 }
-                ProgressBarUpdate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error while selecting media: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        /// <summary>
+        /// Validates the input fields to ensure that required fields are completed.
+        /// Displays a warning if any required field is missing.
+        /// </summary>
+        /// <returns>True if input is valid, false otherwise.</returns>
         private bool validateInput()
         {
-            if (string.IsNullOrEmpty(locationTxtBox.Text) ||
-                categoryListBox.SelectedIndex == -1 ||
-                string.IsNullOrEmpty(issuesRichTxtBox.Text))
+            try
             {
-                MessageBox.Show("Please fill in all the required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (string.IsNullOrEmpty(locationTxtBox.Text) ||
+                    categoryListBox.SelectedIndex == -1 ||
+                    string.IsNullOrEmpty(issuesRichTxtBox.Text))
+                {
+                    MessageBox.Show("Please fill in all the required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(filePathTxt.Text))
+                {
+                    DialogResult result = MessageBox.Show("No media attached. Do you wish to proceed without media?", "Media Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    return result == DialogResult.Yes;
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error in validation: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-            if (string.IsNullOrEmpty(filePathTxt.Text))
-            {
-                DialogResult result = MessageBox.Show("No media attached. Do you wish to proceed without media?", "Media Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                return result == DialogResult.Yes;
-            }
-
-            return true;
         }
 
+        /// <summary>
+        /// Generates a personalized message based on the selected issue category.
+        /// </summary>
+        /// <param name="category">The category of the issue.</param>
+        /// <returns>A personalized message based on the category.</returns>
         private string GetPersonalizedMessage(string category)
         {
             return estimatedTimes.ContainsKey(category)
@@ -89,20 +131,34 @@ namespace Municipality_Services_PROG7321_POE
                 : "Thank you for reporting your issue. It will be addressed promptly.";
         }
 
+        /// <summary>
+        /// Updates the progress bar based on the completion of input fields.
+        /// </summary>
         private void ProgressBarUpdate()
         {
-            int fieldCount = 0;
-            int totalFields = 4;
+            try
+            {
+                int fieldCount = 0;
+                int totalFields = 4;
 
-            if (!string.IsNullOrEmpty(locationTxtBox.Text)) fieldCount++;
-            if (categoryListBox.SelectedIndex != -1) fieldCount++;
-            if (!string.IsNullOrEmpty(issuesRichTxtBox.Text)) fieldCount++;
-            if (!string.IsNullOrEmpty(filePathTxt.Text)) fieldCount++;
+                if (!string.IsNullOrEmpty(locationTxtBox.Text)) fieldCount++;
+                if (categoryListBox.SelectedIndex != -1) fieldCount++;
+                if (!string.IsNullOrEmpty(issuesRichTxtBox.Text)) fieldCount++;
+                if (!string.IsNullOrEmpty(filePathTxt.Text)) fieldCount++;
 
-            int totalProgress = (fieldCount * 100) / totalFields;
-            progressBar.Value = totalProgress;
+                int totalProgress = (fieldCount * 100) / totalFields;
+                progressBar.Value = totalProgress;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error while updating progress: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Handles the submission of the issue report.
+        /// Validates input, generates a request ID, and stores the report data.
+        /// </summary>
         private void submitBtn_Click_1(object sender, EventArgs e)
         {
             try
@@ -110,11 +166,14 @@ namespace Municipality_Services_PROG7321_POE
                 if (!validateInput()) return;
 
                 string selectedCategory = categoryListBox.SelectedItem?.ToString() ?? string.Empty;
+
                 string personalizedMessage = GetPersonalizedMessage(selectedCategory);
+
                 string uniqueID = Guid.NewGuid().ToString().Substring(0, 3);
 
                 MessageBox.Show(personalizedMessage, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                // Creating the new report data
                 newReport = new ReportData
                 {
                     RequestID = uniqueID,
@@ -126,12 +185,23 @@ namespace Municipality_Services_PROG7321_POE
                     Status = "Pending"
                 };
 
+                // Add the report to the list
                 reportList.Add(newReport);
 
+                // Displaying what was entered
+                string enteredDetails = $"Location: {newReport.Location}\n" +
+                                        $"Category: {newReport.Category}\n" +
+                                        $"Description: {newReport.Description}\n" +
+                                        $"Media: {newReport.Media}\n" +
+                                        $"Request ID: {newReport.RequestID}";
+
+                MessageBox.Show(enteredDetails, "Entered Report Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 MessageBox.Show($"Report submitted successfully! Your Request ID is: {uniqueID}\n" +
-                    "Copy it to clipboard for tracking purposes.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                "Copy it to clipboard for tracking purposes.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 ClearForm();
+
             }
             catch (Exception ex)
             {
@@ -139,59 +209,66 @@ namespace Municipality_Services_PROG7321_POE
             }
         }
 
+        /// <summary>
+        /// Clears the form after submitting a report.
+        /// Prompts the user for confirmation before clearing the fields.
+        /// </summary>
         private void ClearForm()
-        {
-            DialogResult result = MessageBox.Show("Clear all fields?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                locationTxtBox.Clear();
-                categoryListBox.SelectedIndex = -1;
-                issuesRichTxtBox.Clear();
-                filePathTxt.Clear();
-                pictureBox.Image = null;
-                progressBar.Value = 0;
-            }
-        }
-
-        private void locationTxtBox_TextChanged(object sender, EventArgs e) => ProgressBarUpdate();
-
-        private void categoryListBox_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            ProgressBarUpdate();
-            if (categoryListBox.SelectedItem != null)
-            {
-                string selectedCategory = categoryListBox.SelectedItem.ToString();
-                estimatedResolutionTime.Text = estimatedTimes.ContainsKey(selectedCategory)
-                    ? $"Estimated Time of Resolution: {estimatedTimes[selectedCategory]}"
-                    : "Estimated Time of Resolution: Not available";
-            }
-        }
-
-        private void issuesRichTxtBox_TextChanged_1(object sender, EventArgs e) => ProgressBarUpdate();
-
-        private void backBtn_Click_1(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to go back?", "Confirm Back", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes) this.Close();
-        }
-
-        private void statusBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if (requestForm == null || requestForm.IsDisposed)
+                DialogResult result = MessageBox.Show("Clear all fields?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    requestForm = new ServiceRequestForm(reportList);
+                    locationTxtBox.Clear();
+                    categoryListBox.SelectedIndex = -1;
+                    issuesRichTxtBox.Clear();
+                    filePathTxt.Clear();
+                    pictureBox.Image = null;
+                    progressBar.Value = 0;
                 }
-
-                requestForm.FormClosed += (s, args) => this.Show();
-                this.Hide();
-                requestForm.Show();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error while clearing the form: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    }
-}
+
+        /// <summary>
+        /// Event handler for when the location text box changes.
+        /// Updates the progress bar accordingly.
+        /// </summary>
+        private void locationTxtBox_TextChanged(object sender, EventArgs e) => ProgressBarUpdate();
+
+        /// <summary>
+        /// Event handler for when the category selection changes.
+        /// Updates the progress bar accordingly.
+        /// </summary>
+        private void categoryListBox_SelectedIndexChanged_1(object sender, EventArgs e) => ProgressBarUpdate();
+
+        /// <summary>
+        /// Event handler for when the issue description text box changes.
+        /// Updates the progress bar accordingly.
+        /// </summary>
+        private void issuesRichTxtBox_TextChanged_1(object sender, EventArgs e) => ProgressBarUpdate();
+
+        /// <summary>
+        /// Event handler for the back button.
+        /// Asks the user for confirmation before closing the form.
+        /// </summary>
+        private void backBtn_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to go back?", "Confirm Back", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes) this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error while going back: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+    }//________________________________________________________End of File___________________________________________________________________________________
+}//___________________________________________________________________________________________________________________________________________________________
+
