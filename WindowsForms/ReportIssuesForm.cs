@@ -19,6 +19,7 @@ namespace Municipality_Services_PROG7321_POE
             /// </summary>
             private List<ReportData> reportList = new List<ReportData>();
 
+
             /// <summary>
             /// declaring an instance for the main form.
             /// </summary>
