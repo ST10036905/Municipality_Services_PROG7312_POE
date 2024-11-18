@@ -50,6 +50,7 @@
             this.submitBtn = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.statusBtn = new System.Windows.Forms.Button();
             this.reportIssuesPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.buttonPanel.SuspendLayout();
@@ -254,6 +255,7 @@
             // 
             // buttonPanel
             // 
+            this.buttonPanel.Controls.Add(this.statusBtn);
             this.buttonPanel.Controls.Add(this.backBtn);
             this.buttonPanel.Controls.Add(this.viewBtn);
             this.buttonPanel.Controls.Add(this.submitBtn);
@@ -270,7 +272,7 @@
             this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(110)))), ((int)(((byte)(51)))));
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.backBtn.Location = new System.Drawing.Point(1099, 5);
+            this.backBtn.Location = new System.Drawing.Point(1095, 5);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(182, 60);
             this.backBtn.TabIndex = 27;
@@ -285,14 +287,13 @@
             this.viewBtn.BackColor = System.Drawing.Color.ForestGreen;
             this.viewBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewBtn.ForeColor = System.Drawing.Color.White;
-            this.viewBtn.Location = new System.Drawing.Point(533, 7);
+            this.viewBtn.Location = new System.Drawing.Point(311, 7);
             this.viewBtn.Name = "viewBtn";
             this.viewBtn.Size = new System.Drawing.Size(249, 57);
             this.viewBtn.TabIndex = 28;
             this.viewBtn.Text = "View applications";
             this.toolTip1.SetToolTip(this.viewBtn, "View issues that were applied");
             this.viewBtn.UseVisualStyleBackColor = false;
-            this.viewBtn.Click += new System.EventHandler(this.viewBtn_Click);
             // 
             // submitBtn
             // 
@@ -301,7 +302,7 @@
             this.submitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(138)))), ((int)(((byte)(82)))));
             this.submitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.submitBtn.Location = new System.Drawing.Point(86, 3);
+            this.submitBtn.Location = new System.Drawing.Point(29, 3);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(206, 60);
             this.submitBtn.TabIndex = 26;
@@ -313,6 +314,22 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // statusBtn
+            // 
+            this.statusBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.statusBtn.AutoSize = true;
+            this.statusBtn.BackColor = System.Drawing.Color.LimeGreen;
+            this.statusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusBtn.ForeColor = System.Drawing.Color.White;
+            this.statusBtn.Location = new System.Drawing.Point(690, 7);
+            this.statusBtn.Name = "statusBtn";
+            this.statusBtn.Size = new System.Drawing.Size(249, 57);
+            this.statusBtn.TabIndex = 29;
+            this.statusBtn.Text = "Track status";
+            this.toolTip1.SetToolTip(this.statusBtn, "View issues that were applied");
+            this.statusBtn.UseVisualStyleBackColor = false;
+            this.statusBtn.Click += new System.EventHandler(this.statusBtn_Click);
             // 
             // ReportIssuesForm
             // 
@@ -356,5 +373,6 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Panel buttonPanel;
         private System.Windows.Forms.TextBox locationTxtBox;
+        private System.Windows.Forms.Button statusBtn;
     }
 }

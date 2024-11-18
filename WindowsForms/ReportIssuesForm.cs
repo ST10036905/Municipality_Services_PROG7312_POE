@@ -1,22 +1,17 @@
 ﻿using Municipality_Services_PROG7321_POE.Classes;
-using Municipality_Services_PROG7321_POE.WindowsForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 //Mayra Selemane
 //ST10036905
-//PROG7321 POE PART 
+//PROG7312 POE 
 //Class used to manipulate the report issues form
 
-    namespace Municipality_Services_PROG7321_POE
-    {
-        public partial class ReportIssuesForm : Form
+namespace Municipality_Services_PROG7321_POE
+{
+    public partial class ReportIssuesForm : Form
         {
 
             /// <summary>
@@ -34,6 +29,11 @@ using System.Windows.Forms;
             /// </summary>
             ReportData newReport;
 
+           
+            /// <summary>   
+            /// declaring an instance for the service request form.
+            /// </summary>
+            ServiceRequestForm requestForm;
 
             /// <summary>
             /// default constructor used to initialize components and the progress bar (user engagement feature).
@@ -207,6 +207,7 @@ using System.Windows.Forms;
                     // Adding the new report object to the reportList (data structure)
                     reportList.Add(newReport);
 
+
                     // Displaying the details of the last report added to the list
                     MessageBox.Show($"Location: {newReport.Location}\n" +
                             $"Category: {newReport.Category}\n" +
@@ -228,6 +229,8 @@ using System.Windows.Forms;
                 issuesRichTxtBox.Clear();
                 filePathTxt.Clear();
                 pictureBox.Image = null;
+
+              
                 }
                 catch (Exception ex)
                 {
@@ -310,34 +313,32 @@ using System.Windows.Forms;
                 }
             }//__________________________________________________________________________________________________________
 
-        private void viewBtn_Click(object sender, EventArgs e)
-        {
 
-        }
+            /// <summary>
+            /// method that redirects user to the service request form. 
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private void statusBtn_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    if (requestForm == null || requestForm.IsDisposed) // Ensure the form is recreated if closed
+                    {
+                        requestForm = new ServiceRequestForm(reportList);
+                    }
 
-
-        ///// <summary>
-        ///// method that redirects user to view applications.
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void viewBtn_Click_1(object sender, EventArgs e)
-        //{
-        //    // creating an instance of the Issues form and passing the report list.
-        //    Issues issuesForm = new Issues(reportList);
-
-        //    // Set the Issues form as a child of the main form
-        //    issuesForm.MdiParent = mainForm;
-
-        //    // Dock the Issues form to fill the container
-        //    issuesForm.Dock = DockStyle.Fill;
-
-        //    // Show the Issues form before closing the current form
-        //    issuesForm.Activate();
-
-
-        //}//__________________________________________________________________________________________________________
+                    requestForm.FormClosed += (s, args) => this.Show(); // Reshow this form when the child is closed
+                    this.Hide();
+                    requestForm.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error during submission: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+             }//__________________________________________________________________________________________________________
 
 
-    }//____________________________________End of File_______________________________________________________
-}//__________________________________________________________________________________________________________
+
+  }//________________________________________________________End of File___________________________________________________________________________________
+}//___________________________________________________________________________________________________________________________________________________________

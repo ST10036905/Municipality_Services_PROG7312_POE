@@ -4,21 +4,24 @@ using System.Drawing;
 using System.Windows.Forms;
 //Mayra Selemane
 //ST10036905
-//PROG7321 POE PART 2
+//PROG7312 POE
 //Class used to manipulate event data
 
 namespace Municipality_Services_PROG7321_POE
 {
     public partial class EventsUserControl : UserControl
-    {
+    { 
+        /// <summary>
+        /// default constructor.
+        /// </summary>
         public EventsUserControl()
         {
             InitializeComponent();
         }
 
-        #region Variables
-
-        // Variables for event properties
+        /// <summary>
+        /// Variables for event properties
+        /// </summary>
         private string _eventName;
         private string _eventCategory;
         private string _eventLocation;
@@ -77,7 +80,6 @@ namespace Municipality_Services_PROG7321_POE
                 pictureBoxDisplay.Image = value; 
             }
         }
-        #endregion
 
-    }
-}
+    }//________________________________________________________End of File___________________________________________________________________________________
+}//___________________________________________________________________________________________________________________________________________________________
