@@ -12,7 +12,7 @@ namespace Municipality_Services_PROG7321_POE
     {
 
         /// <summary>
-        /// default constructor.
+        /// default constructor
         /// </summary>
         public Dashboard()
         {

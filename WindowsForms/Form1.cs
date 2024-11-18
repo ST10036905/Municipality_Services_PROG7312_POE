@@ -11,7 +11,7 @@ namespace Municipality_Services_PROG7321_POE
     public partial class Form1 : Form
     {
         /// <summary>
-        /// Form instances for various functionalities
+        /// Form instances being declared to add functionalities in button of the main window
         /// </summary>
         private ReportIssuesForm reportForm;                     
         private AddEventForm eventForm;            

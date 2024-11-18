@@ -4,9 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 //Mayra Selemane
 //ST10036905
-//PROG7321 POE PART 
+//PROG7312 POE 
 //Class used to store event data
 
 namespace Municipality_Services_PROG7321_POE
@@ -58,7 +59,7 @@ namespace Municipality_Services_PROG7321_POE
 
 
             /// <summary>
-            /// parameterised constructor. 
+            /// parameterised constructor to be used in service requests. 
             /// </summary>
             /// <param name="name"></param>
             /// <param name="category"></param>
@@ -77,6 +78,8 @@ namespace Municipality_Services_PROG7321_POE
                 Location = location;
                 FormattedTime = formattedTime;
             }
-    }//____________________________________End of File_______________________________________________________
-}//__________________________________________________________________________________________________________
+
+    }//________________________________________________________End of File___________________________________________________________________________________
+}//___________________________________________________________________________________________________________________________________________________________
+
 

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 // Mayra Selemane
 // ST10036905
-// PROG7312 POE PART
+// PROG7312 POE 
 // Class used to manipulate service requests
 
 namespace Municipality_Services_PROG7321_POE
@@ -23,6 +23,11 @@ namespace Municipality_Services_PROG7321_POE
         /// Declaring an instance of binary search tree class.
         /// </summary>
         private BinarySearchTree bst;
+
+        /// <summary>
+        /// Declaring MinHeap to prioritize urgent service requests.
+        /// </summary>
+        private MinHeap<ReportData> minHeap = new MinHeap<ReportData>();
 
         /// <summary>
         /// Predefined progress statuses based on service category
@@ -92,6 +97,12 @@ namespace Municipality_Services_PROG7321_POE
                 {
                     MessageBox.Show("No reports found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                }
+
+                // adding priority reports to the min heap
+                foreach (var report in reports.Where(r => r.Status == "Immediate Attention"))
+                {
+                    minHeap.Add(report);
                 }
 
                 // Populate the dictionary with the provided reports, using RequestID as the key

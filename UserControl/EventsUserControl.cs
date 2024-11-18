@@ -2,10 +2,11 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
 //Mayra Selemane
 //ST10036905
 //PROG7312 POE
-//Class used to manipulate event data
+//Class used to manipulate event data user control
 
 namespace Municipality_Services_PROG7321_POE
 {

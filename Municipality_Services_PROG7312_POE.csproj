@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BinarySearchTree.cs" />
+    <Compile Include="Classes\MinHeap.cs" />
     <Compile Include="WindowsForms\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>

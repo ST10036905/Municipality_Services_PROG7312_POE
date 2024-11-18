@@ -256,9 +256,9 @@
             this.buttonPanel.Controls.Add(this.backBtn);
             this.buttonPanel.Controls.Add(this.submitBtn);
             this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonPanel.Location = new System.Drawing.Point(0, 689);
+            this.buttonPanel.Location = new System.Drawing.Point(0, 690);
             this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(1308, 65);
+            this.buttonPanel.Size = new System.Drawing.Size(1308, 64);
             this.buttonPanel.TabIndex = 31;
             // 
             // backBtn
@@ -268,7 +268,7 @@
             this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(110)))), ((int)(((byte)(51)))));
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.backBtn.Location = new System.Drawing.Point(1095, 5);
+            this.backBtn.Location = new System.Drawing.Point(1095, 4);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(182, 60);
             this.backBtn.TabIndex = 27;
@@ -283,7 +283,7 @@
             this.submitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(138)))), ((int)(((byte)(82)))));
             this.submitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.submitBtn.Location = new System.Drawing.Point(29, 3);
+            this.submitBtn.Location = new System.Drawing.Point(29, 2);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(206, 60);
             this.submitBtn.TabIndex = 26;
